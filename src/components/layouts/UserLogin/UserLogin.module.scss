@@ -1,0 +1,15 @@
+.wrap {
+    span:first-child {
+        width: 24px;
+        height: 24px;
+        background-color: #ccc;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    span p {
+        font-size: 1rem;
+    }
+}

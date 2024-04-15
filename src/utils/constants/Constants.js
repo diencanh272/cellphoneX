@@ -1,0 +1,23 @@
+//Type FETCH LIST
+export const FETCH_PRODUCT_LIST = 'FETCH_PRODUCT_LIST';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+
+//Categories
+export const FETCH_CATEGORY_LIST = 'FETCH_CATEGORY_LIST';
+
+//Manufacturers
+export const FETCH_MANUFACTURER_LIST = 'FETCH_MANUFACTURER_LIST';
+
+//Account
+export const FETCH_ACCOUNT_LIST = 'FETCH_ACCOUNT_LIST';
+export const CREATE_ACCOUNT = 'CREATE_ACCOUNT';
+
+// Check user login & signup
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';

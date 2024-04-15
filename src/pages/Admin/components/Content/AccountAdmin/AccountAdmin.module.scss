@@ -1,0 +1,41 @@
+.wrap table tbody tr {
+    background-color: #fff;
+    border: 1px solid rgba(145, 158, 171, 0.239);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    position: relative;
+    align-items: center;
+}
+
+.table {
+    width: 100%;
+
+    &-header {
+        font-size: 1.4rem;
+        font-weight: 600;
+        td {
+            text-align: center;
+        }
+    }
+
+    &-main {
+        display: block;
+        margin-top: 16px;
+        text-align: center;
+        color: var(--third-color);
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+
+    tr + tr {
+        margin-top: 20px;
+    }
+}
+
+tbody tr td .action {
+    margin-left: 12px;
+    min-width: 20px;
+    min-height: 20px;
+    padding: 2px;
+}

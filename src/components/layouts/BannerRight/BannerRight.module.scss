@@ -1,0 +1,13 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item {
+    img {
+        width: 258px;
+        height: 115px;
+        object-fit: cover;
+    }
+}

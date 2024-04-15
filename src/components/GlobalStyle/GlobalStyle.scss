@@ -1,0 +1,183 @@
+@use './base';
+@use './abstracts';
+
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+:root {
+    //Line-clamp
+    --line-clamp: 2;
+    --word-clamp: 150px;
+
+    //Light theme:
+    --primary-color: #e0052b;
+    --secondary-color: #707070;
+    --third-color: #777;
+    --category-color: #444;
+    --header-background: #e9efff;
+    --white-color: #fff;
+    --background-hot-sale: #f9405d;
+    --box-shadow-menu: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    --box-shadow-checkbox: 0px 0px 5px 2px rgba(242, 17, 58, 1);
+    --box-shadow-input: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    --primary-hover-button: linear-gradient(#f52f32, #e11b1e);
+    --hr-separate-color: #f5f5f5;
+    --background-primary: #f4f6f8;
+    --text-color-default: #444;
+
+    --price-current-color: #d70018;
+    --price-old-color: #707070;
+
+    --admin-primary-color: #5a06cb;
+
+    //Dark theme:
+
+    //Size
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    background-color: var(--background-primary);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed; // Giúp tải font nhanh
+    color: var(--text-color-default);
+}
+
+header {
+    top: 0;
+    background-color: var(--header-background);
+    position: fixed;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+main {
+    margin-top: 130px;
+}
+
+input,
+select,
+label,
+button {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+input {
+    cursor: text;
+}
+
+select {
+    cursor: default;
+}
+
+a,
+img,
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+table,
+thead,
+tbody,
+tfoot,
+th,
+tr,
+td {
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.word-clamp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+input[type='checkbox'] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    outline: none;
+    content: none;
+}
+
+input[type='checkbox'] {
+    content: '';
+    position: relative;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border: 1px solid #adb5bd;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+input[type='checkbox']:checked::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 1px;
+    width: 6px;
+    height: 10px;
+    transform: translateY(-50%);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    rotate: 40deg;
+}
+input[type='checkbox']:checked {
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow-checkbox);
+    border-color: var(--white-color);
+}

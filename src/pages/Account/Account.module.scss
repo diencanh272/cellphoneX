@@ -1,0 +1,70 @@
+.nav {
+    padding: 76px 10px 0;
+
+    a span {
+        font-size: 2rem;
+    }
+}
+
+.top {
+    text-align: center;
+    margin: 20px 0;
+
+    .thumb {
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    }
+
+    .title {
+        margin-top: 10px;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}
+
+.form-wrap {
+    padding-bottom: 80px;
+}
+
+.line-through {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    width: 60%;
+
+    hr {
+        background-color: #dbdbdb;
+        height: 1px;
+        width: 100%;
+    }
+
+    p {
+        margin: 0 5px;
+        white-space: nowrap;
+    }
+}
+
+.choose-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    .login-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 0;
+        border-radius: 10px;
+        font-size: 1.8rem;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

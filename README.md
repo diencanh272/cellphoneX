@@ -68,3 +68,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# 1.Box input component(có form input giống nhau) (x)
+
+# 2.Bottom bar fixed chuyển thành Component (x)
+
+# 3. Show quantity product in cart (Home page)
+
+# 4.Kiểm tra đăng nhập(**4**)(**OK**)
+
+# 5.Breadcrumbs
+
+# 6.Search
+
+# 7.Xử lý loading bằng HOF
+
+# 8.Fix lại Link bằng useRoutMatch() lấy id truyền cho product detail (prop)
+
+# 9.link ảnh(**FAIL**)(cần chỉnh sửa)
+
+# 10.Sử lý Sidebar admin (**3**)(**OK**)
+
+# 11.Phân trang Product admin(**8**)
+
+# 12.Thêm manufacturer vào main menu(**7**)
+
+# 13.Filter HotSale(x)
+
+# 14.filter category product(**5**)
+
+# 15.Click detail product(**6**)
+
+# 16.Read(Home,Admin Page**OK**)(Detail page**Not**)
+
+# 17.Delete(Admin**OK**)
+
+# 18.Create(Admin**OK**)(**1**)(chú ý link ảnh => 400 )
+
+# 19.Update(Admin**OK**)(**2**)(lỗi phải làm mới mỗi lần edit, close modal và hiện popup update success )
+
+# 20. AccountAdmin(**OK**)
+
+# 21. Show star product
+
+# 22. Validate Form(**9**)
+
+# 23. Mã hóa password (x)(Tooken)

@@ -1,0 +1,50 @@
+.wrap {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+
+    position: fixed;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.main {
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    padding: 15px 0 8px 0;
+    img {
+        width: 160px;
+        height: 30px;
+        object-fit: cover;
+    }
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+}
+
+.order,
+.cart,
+.user {
+    padding: 3px 5px;
+
+    &:hover {
+        background-color: rgb(223, 51, 70);
+    }
+
+    span {
+        font-size: 1.4rem;
+    }
+}
+
+.title {
+    margin-left: 8px;
+}

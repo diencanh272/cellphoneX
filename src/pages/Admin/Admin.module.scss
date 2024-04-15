@@ -1,0 +1,14 @@
+.main {
+    height: 100%;
+}
+
+.sidebar {
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px 0 rgba(153, 153, 153, 0.64);
+    -webkit-box-shadow: 0 0 10px 0 rgba(153, 153, 153, 0.64);
+    -moz-box-shadow: 0 0 10px 0 rgba(153, 153, 153, 0.64);
+}
+
+.content {
+    margin-left: 16px;
+}
