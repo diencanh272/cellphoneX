@@ -4,7 +4,6 @@ import styles from './TooltipModal.module.scss';
 import Button from '../Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faBell, faGears, faTruckFast, faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { userCurrentSignup } from '~/utils/helpers/userCurrentSignup';
 import ShortNameUser from '~/utils/helpers/shortNameUser';
 
 const cx = classNames.bind(styles);
@@ -16,8 +15,10 @@ function TooltipModal() {
         }
     };
 
+    const getAccount = JSON.parse(localStorage.getItem('Account'));
+
     const activeAdmin = () => {
-        if (userCurrentSignup.status === 'ACTIVE') {
+        if (getAccount.status === 'ACTIVE') {
             console.log('active admin');
             return (
                 <Button className={cx('btn')} to={'/admin'} text large leftIcon={<FontAwesomeIcon icon={faGears} />}>
@@ -35,8 +36,8 @@ function TooltipModal() {
                 <ShortNameUser />
             </div>
             <div className={cx('top-right')}>
-                <span className={cx('fullname')}>{userCurrentSignup.fullname}</span>
-                <span className={cx('username')}>{`@${userCurrentSignup.username}`}</span>
+                <span className={cx('fullname')}>{getAccount.fullname}</span>
+                <span className={cx('username')}>{`@${getAccount.username}`}</span>
             </div>
         </>
     );

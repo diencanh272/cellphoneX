@@ -1,15 +1,16 @@
-import { userCurrentSignup } from './userCurrentSignup';
-
 function ShortNameUser() {
-    if (!userCurrentSignup.fullname) {
-        return null; // hoặc return một thông báo nếu muốn
-    }
-    const arrStr = [];
-    let text = userCurrentSignup.fullname;
-    const myArray = text.split(' ');
-    arrStr.push(myArray);
+    const getAccount = JSON.parse(localStorage.getItem('Account'));
+    // console.log(getAccount);
 
-    const firstCharacters = arrStr.map((arr) => {
+    const splittedStr = [];
+
+    let text = getAccount.fullname;
+
+    // console.log(text);
+    const myArray = text.split(' ');
+    splittedStr.push(myArray);
+
+    const firstCharacters = splittedStr.map((arr) => {
         const myCharacter = arr.map((word) => word[0]);
         return myCharacter;
     });

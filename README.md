@@ -95,7 +95,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 13.Filter HotSale(x)
 
-# 14.filter category product(**5**)
+# 14.filter category product(**5**)(**OK**)
 
 # 15.Click detail product(**6**)
 
@@ -114,3 +114,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # 22. Validate Form(**9**)
 
 # 23. Mã hóa password (x)(Tooken)
+
+# 24. set component did mount(**10**)

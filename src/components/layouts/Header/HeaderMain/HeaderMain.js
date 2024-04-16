@@ -10,7 +10,6 @@ import Search from '~/components/layouts/Search';
 import Button from '~/components/common/Button';
 import { Modal } from 'antd';
 import UserLogin from '../../UserLogin';
-import { userCurrentSignup } from '~/utils/helpers/userCurrentSignup';
 import PopupLogin from '~/components/common/Modal/Popup/PopupLogin';
 
 const cx = classNames.bind(styles);
@@ -33,7 +32,7 @@ function HeaderMain() {
 
     const UserLoginButton = () =>
         account ? (
-            <UserLogin userCurrentSignup={userCurrentSignup} />
+            <UserLogin />
         ) : (
             <Button
                 className={cx('user')}

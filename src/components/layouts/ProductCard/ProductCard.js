@@ -11,15 +11,21 @@ import { actionFetchListProductApi } from '~/actions/ProductAction';
 
 const cx = classNames.bind(styles);
 
-function ProductCard() {
+function ProductCard({ categoryName }) {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
+
+    // console.log(categoryName);
 
     useEffect(() => {
         dispatch(actionFetchListProductApi());
     }, [dispatch]);
     // Sử dụng map để render mỗi sản phẩm ra giao diện
-    const renderedProducts = products.map((product) => (
+
+    const filterProductByCategory = products.filter((prd) => prd.categoryName === categoryName);
+    // console.log(filterProductByCategory);
+
+    const renderedProducts = filterProductByCategory.map((product) => (
         <div key={product.id} className={cx('col')}>
             <article className={cx('wrap')}>
                 <div className={cx('img-wrap')}>

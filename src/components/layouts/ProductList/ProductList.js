@@ -27,7 +27,7 @@ function ProductList() {
                     </div> */}
                 </div>
                 <div className={cx('row', 'row-cols-5')}>
-                    <ProductCard />
+                    <ProductCard categoryName={category.name} />
                 </div>
             </div>
         );

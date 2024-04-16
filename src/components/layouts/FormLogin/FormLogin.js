@@ -33,32 +33,24 @@ function FormLogin() {
     const handleSubmitLogin = (e) => {
         e.preventDefault();
 
-        // const userLogin = {
-        //     accountName,
-        //     password,
-        // };
-
-        let accountSuccess = {};
-        for (let x in accounts) {
-            if (accounts[x].email === accountName || accounts[x].mobile === accountName) {
-                accountSuccess = accounts[x];
-                console.log(accountSuccess);
-                console.log('login success');
-                setLogin(true);
+        const timeNavigate = () => {
+            setTimeout(() => {
                 navigate('/');
-                handleReset();
-            } else if (accounts[x].email !== accountName && accounts[x].mobile !== accountName) {
-                // console.log(accounts[x].password);
-                setLogin(false);
-            }
+            }, 1500);
+        };
+
+        const checkAccount = accounts.find((acc) => acc.email === accountName || acc.mobile === accountName);
+
+        if (checkAccount) {
+            localStorage.setItem('Account', JSON.stringify(checkAccount));
+            console.log(checkAccount);
+            console.log('login success');
+            timeNavigate();
+            //TODO HOC loading
+        } else if (checkAccount === undefined) {
+            console.log('Account not exist');
+            setLogin(false);
         }
-
-        localStorage.setItem('Account', JSON.stringify(accountSuccess));
-    };
-
-    const handleReset = () => {
-        setAccountName('');
-        setPassword('');
     };
 
     const LoginFail = () =>

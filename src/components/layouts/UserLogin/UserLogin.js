@@ -8,19 +8,10 @@ import TooltipModal from '~/components/common/TooltipModal';
 
 const cx = classNames.bind(styles);
 
-function UserLogin({ userCurrentSignup }) {
-    // console.log(userCurrentSignup);
-    const GetUserName = () => {
-        setTimeout(() => {
-            return userCurrentSignup.username;
-        }, 1000);
-    };
-
+function UserLogin() {
     return (
         <Tooltip placement="bottomRight" title={<TooltipModal />} color="#fff">
-            <Button className={cx('wrap')} leftIcon={<ShortNameUser />}>
-                <GetUserName />
-            </Button>
+            <Button className={cx('wrap')} leftIcon={<ShortNameUser />}></Button>
         </Tooltip>
     );
 }
