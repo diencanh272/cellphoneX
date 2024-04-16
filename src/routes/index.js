@@ -18,7 +18,7 @@ import Cart from '~/pages/Cart';
 const publicRoute = [
     { path: '/', component: Home },
     { path: '/admin/*', component: Admin, layout: null },
-    { path: '/detail', component: Detail },
+    { path: '/detail/:name', component: Detail },
     { path: '/cart/payment', component: Payment, layout: HeaderOnly },
     { path: '/account/*', component: Account, layout: HeaderOnly },
     { path: '/cart', component: Cart, layout: HeaderOnly },

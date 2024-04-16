@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ProductCard.module.scss';
-import { Link } from 'react-router-dom';
 import Button from '~/components/common/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -20,22 +19,22 @@ function ProductCard({ categoryName }) {
     useEffect(() => {
         dispatch(actionFetchListProductApi());
     }, [dispatch]);
-    // Sử dụng map để render mỗi sản phẩm ra giao diện
 
     const filterProductByCategory = products.filter((prd) => prd.categoryName === categoryName);
     // console.log(filterProductByCategory);
 
+    // Sử dụng map để render mỗi sản phẩm ra giao diện
     const renderedProducts = filterProductByCategory.map((product) => (
         <div key={product.id} className={cx('col')}>
             <article className={cx('wrap')}>
                 <div className={cx('img-wrap')}>
-                    <Link to={'/detail'}>
+                    <Button to={`/detail/${product.name}`}>
                         <img className={cx('thumb')} src={product.imageName} alt={product.name} />
-                    </Link>
+                    </Button>
                 </div>
                 <div className={cx('info')}>
                     <h3 className={cx('name', 'line-clamp')}>
-                        <Link to={'/detail'}>{product.name}</Link>
+                        <Button to={`/detail/${product.name}`}>{product.name}</Button>
                     </h3>
                     <div className={cx('price')}>
                         <span className={cx('current')}>{product.price}</span>

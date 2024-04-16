@@ -10,7 +10,7 @@ const getProducts = () => {
     return api.get(urlProduct);
 };
 
-const getAllProductById = (id) => {
+const getProductById = (id) => {
     return api.get(`${urlProduct}/${id}`);
 };
 
@@ -52,7 +52,7 @@ const getManufacturers = () => {
 
 export {
     getProducts,
-    getAllProductById,
+    getProductById,
     createNewProduct,
     updateProduct,
     deleteProduct,

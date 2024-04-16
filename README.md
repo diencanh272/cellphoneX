@@ -91,15 +91,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 11.Phân trang Product admin(**8**)
 
-# 12.Thêm manufacturer vào main menu(**7**)
+# 12.Thêm manufacturer vào main menu(**7**)(**Doing**)
 
 # 13.Filter HotSale(x)
 
 # 14.filter category product(**5**)(**OK**)
 
-# 15.Click detail product(**6**)
+# 15.Click detail product(**6**)(**OK**)
 
-# 16.Read(Home,Admin Page**OK**)(Detail page**Not**)
+# 16.Read(Home,Admin Page,Detail)(**OK**)
 
 # 17.Delete(Admin**OK**)
 

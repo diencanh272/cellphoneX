@@ -1,5 +1,11 @@
 .image-wrap {
-    box-shadow: var(--box-shadow-image);
+    box-shadow: var(--box-shadow-input);
+
+    img {
+        height: 100%;
+        width: 80%;
+        object-fit: cover;
+    }
 }
 
 .info {

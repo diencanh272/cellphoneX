@@ -1,5 +1,5 @@
 import * as TYPES from '~/utils/constants/Constants';
-import { createNewProduct, deleteProduct, getProducts, updateProduct } from '~/services/api/api';
+import { createNewProduct, deleteProduct, getProductById, getProducts, updateProduct } from '~/services/api/api';
 
 //******Call API(thunk) product
 
@@ -9,6 +9,20 @@ export const actionFetchListProductApi = () => {
         return getProducts()
             .then((response) => {
                 dispatch(actionProductDispatch(response));
+            })
+            .catch((error) => {
+                return error;
+            });
+    };
+};
+
+//get product by id
+export const actionGetProductByIdApi = (productId) => {
+    return (dispatch) => {
+        return getProductById(productId)
+            .then((response) => {
+                console.log('get product by id true');
+                dispatch(actionGetProductByIdDispatch(response));
             })
             .catch((error) => {
                 return error;
@@ -61,6 +75,13 @@ export const actionUpdateProductApi = (productId, updatedProduct) => {
 export const actionProductDispatch = (products) => {
     return {
         type: TYPES.FETCH_PRODUCT_LIST,
+        payload: products,
+    };
+};
+
+export const actionGetProductByIdDispatch = (products) => {
+    return {
+        type: TYPES.GET_PRODUCT_BY_ID,
         payload: products,
     };
 };

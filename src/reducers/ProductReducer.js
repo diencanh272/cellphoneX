@@ -25,6 +25,9 @@ export const getAllProductReducer = (state = initialState, action) => {
             }
             return updatedState;
 
+        case TYPES.GET_PRODUCT_BY_ID:
+            return action.payload;
+
         default:
             return [...state];
     }
