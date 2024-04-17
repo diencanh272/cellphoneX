@@ -30,10 +30,18 @@
         font-weight: 500;
         font-size: 1.4rem;
 
+        .td-thumb {
+            position: relative;
+            height: 50px;
+        }
+
         .thumb {
             width: 60px;
-            height: auto;
+            height: 50px;
             object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .btn {

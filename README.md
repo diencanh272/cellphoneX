@@ -83,15 +83,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 7.Xử lý loading bằng HOF
 
-# 8.Fix lại Link bằng useRoutMatch() lấy id truyền cho product detail (prop)
+# 8.Fix lại Link bằng useRoutMatch() lấy id truyền cho product detail (**OK**)
 
 # 9.link ảnh(**FAIL**)(cần chỉnh sửa)
 
 # 10.Sử lý Sidebar admin (**3**)(**OK**)
 
-# 11.Phân trang Product admin(**8**)
+# 11.Phân trang Product admin(**8**)(**OK**)
 
-# 12.Thêm manufacturer vào main menu(**7**)(**Doing**)
+# 12.Thêm manufacturer vào main menu(**7**)(**OK**)
 
 # 13.Filter HotSale(x)
 
@@ -111,8 +111,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 21. Show star product
 
-# 22. Validate Form(**9**)
+# 22. Validate Form(**9**) (**Doing**)
 
-# 23. Mã hóa password (x)(Tooken)
+# 23. Mã hóa password (x)(Token)
 
 # 24. set component did mount(**10**)
+
+# 25. Add to Cart(**11**)

@@ -10,6 +10,7 @@ import { actionDeleteProductApi, actionFetchListProductApi } from '~/actions/Pro
 import Modal from 'antd/es/modal/Modal';
 import PopupConfirm from '~/components/common/Modal/PopupConfirm';
 import FormUpdateProduct from '../FormUpdateProduct';
+import Pagination from '~/utils/helpers/Pagination';
 
 const cx = classNames.bind(styles);
 
@@ -19,12 +20,21 @@ function ProductsAdmin() {
     const [productName, setProductName] = useState('');
     const [productId, setProductId] = useState('');
     const [productUpdate, setProductUpdate] = useState({});
+
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
-
     useEffect(() => {
         dispatch(actionFetchListProductApi());
     }, [dispatch]);
+
+    //Pagination start
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productPerPage] = useState(5);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const indexOfLastProductPerPage = currentPage * productPerPage;
+    const indexOfFirstProductPerPage = indexOfLastProductPerPage - productPerPage;
+    const currentProductsOnPage = products.slice(indexOfFirstProductPerPage, indexOfLastProductPerPage);
+    //Pagination end
 
     const handleDelete = (productId, productName) => {
         setProductName(productName);
@@ -49,11 +59,11 @@ function ProductsAdmin() {
         setProductUpdate({ productUpdate });
     };
 
-    const renderProductAdmin = products.map((product, index) => {
+    const renderProductAdmin = currentProductsOnPage.map((product, index) => {
         return (
             <tr className={cx('row')} key={index}>
                 <td className={cx('col-1')}>{product.id}</td>
-                <td className={cx('col-1')}>
+                <td className={cx('col-1', 'td-thumb')}>
                     <img className={cx('thumb')} src={product.imageName} alt={product.imageName} />
                 </td>
                 <td className={cx('col-3')}>{product.name}</td>
@@ -99,7 +109,14 @@ function ProductsAdmin() {
                         </tr>
                     </thead>
                     <tbody className={cx('table-main')}>{renderProductAdmin}</tbody>
-                    <tfoot className={cx('table-footer')}></tfoot>
+                    <tfoot className={cx('table-footer')}>
+                        <Pagination
+                            currentPage={currentPage}
+                            productPerPage={productPerPage}
+                            paginate={paginate}
+                            totalProduct={products.length}
+                        />
+                    </tfoot>
                 </table>
             </div>
 

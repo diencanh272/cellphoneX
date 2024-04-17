@@ -1,0 +1,12 @@
+.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+}
+
+.active {
+    color: var(--primary-color);
+    font-weight: 700;
+    border-color: var(--primary-color);
+}
