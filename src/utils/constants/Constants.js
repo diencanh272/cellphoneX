@@ -22,3 +22,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
+
+//Cart
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const DELETE_PRODUCT_CART = 'DELETE_PRODUCT_CART';

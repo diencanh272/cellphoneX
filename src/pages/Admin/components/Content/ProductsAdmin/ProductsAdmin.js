@@ -10,7 +10,7 @@ import { actionDeleteProductApi, actionFetchListProductApi } from '~/actions/Pro
 import Modal from 'antd/es/modal/Modal';
 import PopupConfirm from '~/components/common/Modal/PopupConfirm';
 import FormUpdateProduct from '../FormUpdateProduct';
-import Pagination from '~/utils/helpers/Pagination';
+import Pagination from '~/components/common/Pagination';
 
 const cx = classNames.bind(styles);
 

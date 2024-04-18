@@ -21,7 +21,13 @@ function TooltipModal() {
         if (getAccount.status === 'ACTIVE') {
             console.log('active admin');
             return (
-                <Button className={cx('btn')} to={'/admin'} text large leftIcon={<FontAwesomeIcon icon={faGears} />}>
+                <Button
+                    className={cx('btn')}
+                    to={'/admin/dashboard'}
+                    text
+                    large
+                    leftIcon={<FontAwesomeIcon icon={faGears} />}
+                >
                     Admin
                 </Button>
             );

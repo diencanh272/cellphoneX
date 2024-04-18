@@ -8,6 +8,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionFetchListProductApi } from '~/actions/ProductAction';
+import { actionAddToCart } from '~/actions/CartAction';
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +33,10 @@ function Detail() {
 
     const findProductByParam = products.find((prd) => prd.name === name);
     // console.log(findProductByParam);
+
+    const handleAddToCart = () => {
+        dispatch(actionAddToCart(findProductByParam));
+    };
 
     return (
         <>
@@ -73,6 +78,7 @@ function Detail() {
                                         rounded
                                         className={cx('add-to-cart')}
                                         leftIcon={<FontAwesomeIcon icon={faCartPlus} />}
+                                        onClick={handleAddToCart}
                                     >
                                         Thêm vào giỏ
                                     </Button>

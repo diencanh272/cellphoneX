@@ -1,184 +1,204 @@
-import { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 import classNames from 'classnames/bind';
 
 import styles from './FormSignup.module.scss';
 import Button from '~/components/common/Button';
 import { defaultCreateDate } from '~/utils/helpers/defaultCreateDate';
-import { useDispatch } from 'react-redux';
-import { actionCreateNewAccountApi } from '~/actions/AccountAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreateNewAccountApi, actionFetchListAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
 function FormSignup() {
-    const [fullname, setFullname] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [mobile, setMobile] = useState('');
-    const [password, setPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [avatarImageName, setAvatarImageName] = useState('');
-    const [address, setAddress] = useState('');
-    const [createDate, setCreateDate] = useState(defaultCreateDate);
-    const [status, setStatus] = useState('');
-
-    const [validate, setValidate] = useState(false);
-
     const dispatch = useDispatch();
+    const accounts = useSelector((state) => state.accounts);
     const navigate = useNavigate();
 
-    const handlePathImage = (e) => {
-        const file = e.target.files[0].name;
-        setAvatarImageName(file);
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newAccount = {
-            fullname,
-            username,
-            email,
-            mobile,
-            password,
-            avatarImageName,
-            address,
-            createDate,
-            status,
-        };
+    useEffect(() => {
+        dispatch(actionFetchListAccountApi());
+    }, [dispatch]);
 
-        if (password !== newPassword) {
-            setValidate(true);
-        } else {
-            dispatch(actionCreateNewAccountApi(newAccount)).then(() => {
-                localStorage.setItem('Account', JSON.stringify(newAccount));
-                navigate('/');
-                handleReset();
-            });
-        }
-
-        console.log(newAccount);
+    const checkEmailExist = (email) => {
+        const check = accounts.find((account) => account.email === email);
+        return check ? '' : 'Email đã tồn tại!';
     };
 
-    const handleReset = () => {
-        setFullname('');
-        setUsername('');
-        setEmail('');
-        setMobile('');
-        setPassword('');
-        setNewPassword('');
-        setAvatarImageName(null);
-        setAddress('');
-        setCreateDate('');
-        setStatus('');
+    const checkMobileExist = (mobile) => {
+        const check = accounts.find((account) => account.mobile === mobile);
+        return check ? '' : 'Số điện thoại đã tồn tại!';
     };
+
+    const checkUsernameExist = (username) => {
+        const check = accounts.find((account) => account.username === username);
+        return check ? '' : 'Username đã tồn tại!';
+    };
+
+    // kiểm tra email, mobile, fullname, username đã tồn tại chưa
+
+    //!! Hàm kiểm tra pattern start
+    // const validateEmail = (email) => {
+    //     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     return emailPattern.test(email); //true / false
+    // };
+    // console.log(validateEmail(email));
+    //!! Hàm kiểm tra pattern end
+
+    const SignupSchema = Yup.object().shape({
+        fullname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+        username: Yup.string()
+            .min(2, 'Too Short!')
+            .max(20, 'Too Long!')
+            .matches(/^[a-zA-Z0-9]+$/, 'No match')
+            .required('Required')
+            .test('check-email-exist', 'User đã tồn tại ', (value) => checkUsernameExist(value)),
+
+        //1viet hoa, 1 so
+        mobile: Yup.string()
+            .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, 'No match')
+            .required('Required')
+            .test('check-email-exist', 'Số điện thoại đã tồn tại ', (value) => checkMobileExist(value)),
+
+        //k có kí tự đặc biệt
+        email: Yup.string()
+            .min(2, 'Too Short!')
+            .max(50, 'Too Long!')
+            .email('Invalid email')
+            .required('Required')
+            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email không hợp lệ!..Eg:a@gmail.com')
+            .test('check-email-exist', 'Email đã tồn tại ', (value) => checkEmailExist(value)),
+        password: Yup.string()
+            .min(6, 'Too Short!')
+            .max(20, 'Too Long!')
+            .matches(
+                /^(?=.*[A-Z])(?=.*\d).+/,
+                'Mật khẩu từ 6-20 kí tự, bao gồm ít nhất 1 chữ hoa,1 chữ thường, 1 chữ số',
+            )
+            .required('Required'),
+        avatarImageName: Yup.string(),
+        address: Yup.string().required('Required'),
+        createDate: Yup.string().required('Required'),
+    });
 
     return (
         <div className={cx('wrap')}>
-            <form onSubmit={handleSubmit}>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input', 'fullname-input')}
-                        type="text"
-                        value={fullname}
-                        onChange={(e) => setFullname(e.target.value)}
-                        placeholder="Nhập Họ và tên"
-                        required
-                    />
-                    <label className={cx('label')}>Họ và tên (*)</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Nhập username"
-                        required
-                    />
-                    <label className={cx('label')}>Nhập username</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="text"
-                        value={mobile}
-                        onChange={(e) => setMobile(e.target.value)}
-                        placeholder="Nhập số điện thoại"
-                        required
-                    />
-                    <label className={cx('label')}>Nhập số điện thoại (*)</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Nhập email"
-                        required
-                        maxLength={255}
-                        autoComplete="username"
-                    />
-                    <label className={cx('label')}>Nhập email (*)</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Nhập mật khẩu"
-                        required
-                        autoComplete="new-password"
-                    />
-                    <label className={cx('label')}>Nhập mật khẩu (*)</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="password"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        placeholder="Nhập lại mật khẩu"
-                        required
-                        autoComplete="new-password"
-                    />
-                    {validate && <span>Mật khẩu không trùng khớp!!</span>}
-                    <label className={cx('label')}>Nhập lại mật khẩu</label>
-                </div>
+            <Formik
+                initialValues={{
+                    fullname: '',
+                    username: '',
+                    mobile: '',
+                    email: '',
+                    password: '',
+                    avatarImageName: '',
+                    address: '',
+                    createDate: defaultCreateDate,
+                }}
+                validationSchema={SignupSchema}
+                onSubmit={(value, { setSubmitting }) => {
+                    dispatch(actionCreateNewAccountApi(value))
+                        .then((response) => {
+                            if (response.error) {
+                                console.log(response);
+                                setSubmitting(false);
+                            } else {
+                                console.log(value);
+                                localStorage.setItem('Account', JSON.stringify(value));
+                                navigate('/');
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                }}
+            >
+                {({ errors, touched, isSubmitting }) => (
+                    <Form>
+                        <div className={cx('box-input')}>
+                            {errors.fullname && touched.fullname ? <div>{errors.fullname}</div> : null}
+                            <Field
+                                className={cx('input', 'fullname-input')}
+                                type="text"
+                                name="fullname"
+                                placeholder="Nhập Họ và tên..."
+                            />
+                            <label className={cx('label')}>Họ và tên (*)</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.username && touched.username ? <div>{errors.username}</div> : null}
+                            <Field className={cx('input')} type="text" name="username" placeholder="Nhập username..." />
+                            <label className={cx('label')}>Nhập username</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.mobile && touched.mobile ? <div>{errors.mobile}</div> : null}
+                            <Field
+                                className={cx('input')}
+                                type="text"
+                                name="mobile"
+                                placeholder="Nhập số điện thoại..."
+                                required
+                            />
+                            <label className={cx('label')}>Nhập số điện thoại (*)</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                            <Field className={cx('input')} type="email" name="email" placeholder="Nhập email..." />
+                            <label className={cx('label')}>Nhập email (*)</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.password && touched.password ? <div>{errors.password}</div> : null}
+                            <Field
+                                className={cx('input')}
+                                type="password"
+                                name="password"
+                                placeholder="Nhập password..."
+                                autoComplete="password"
+                            />
+                            <label className={cx('label')}>Nhập mật khẩu (*)</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.rePassword && touched.rePassword ? <div>{errors.rePassword}</div> : null}
+                            <Field
+                                className={cx('input')}
+                                type="password"
+                                name="rePassword"
+                                placeholder="Nhập lại password..."
+                                autoComplete="re-password"
+                            />
+                            <label className={cx('label')}>Nhập lại mật khẩu</label>
+                        </div>
 
-                <div className={cx('box-input')}>
-                    <input className={cx('input')} type="file" onChange={handlePathImage} required />
-                    <label className={cx('label')}>Chọn avatar</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Nhập địa chỉ"
-                        required
-                    />
-                    <label className={cx('label')}>Nhập địa chỉ</label>
-                </div>
-                <div className={cx('box-input')}>
-                    <input
-                        className={cx('input')}
-                        type="date"
-                        value={defaultCreateDate}
-                        onChange={(e) => setCreateDate(e.target.value)}
-                    />
-                    <label className={cx('label')}>Create date</label>
-                </div>
+                        <div className={cx('box-input')}>
+                            {errors.avatarImageName && touched.avatarImageName ? (
+                                <div>{errors.avatarImageName}</div>
+                            ) : null}
+                            <Field className={cx('input')} type="file" name="avatarImageName" />
+                            <label className={cx('label')}>Chọn avatar</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.address && touched.address ? <div>{errors.address}</div> : null}
+                            <Field className={cx('input')} type="text" name="address" placeholder="Nhập địa chỉ..." />
 
-                <Button className={cx('btn')} type="submit" large primary>
-                    Đăng kí
-                </Button>
-            </form>
+                            <label className={cx('label')}>Nhập địa chỉ</label>
+                        </div>
+                        <div className={cx('box-input')}>
+                            {errors.defaultCreateDate && touched.defaultCreateDate ? (
+                                <div>{errors.defaultCreateDate}</div>
+                            ) : null}
+                            <Field className={cx('input')} type="date" name="createDate" disabled />
+                            <label className={cx('label')}>Create date</label>
+                        </div>
 
+                        <Button className={cx('btn')} type="submit" large primary>
+                            {isSubmitting ? 'Đang đăng ký...' : 'Đăng ký'}
+                        </Button>
+                    </Form>
+                )}
+            </Formik>
             <div className={cx('question')}>
                 <p>Bạn đã có tài khoản?</p>
-                <Link to={'/account/register'}>Đăng nhập ngay</Link>
+                <Link to={'/account/login'}>Đăng nhập ngay</Link>
             </div>
         </div>
     );

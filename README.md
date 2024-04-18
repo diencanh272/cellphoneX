@@ -79,9 +79,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 5.Breadcrumbs
 
-# 6.Search
+# 6.Search(**12**)
 
-# 7.Xử lý loading bằng HOF
+# 7.Xử lý loading bằng HOC(**10**)(**OK**)(**Content Admin**)
 
 # 8.Fix lại Link bằng useRoutMatch() lấy id truyền cho product detail (**OK**)
 
@@ -111,10 +111,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 21. Show star product
 
-# 22. Validate Form(**9**) (**Doing**)
+# 22. Validate Form(**9**) (**OK Form Signup**)
 
 # 23. Mã hóa password (x)(Token)
 
-# 24. set component did mount(**10**)
+# 24. set component did mount(**13**)
 
-# 25. Add to Cart(**11**)
+# 25. Add to Cart(**11**)(**Doing**)

@@ -9,6 +9,7 @@ import ManufacturerAdmin from './ManufacturerAdmin';
 import CategoryAdmin from './CategoryAdmin';
 import ProductsAdmin from './ProductsAdmin';
 import FormCreateProduct from './FormCreateProduct';
+import withLoading from '~/utils/helpers/withLoading';
 
 const cx = classNames.bind(styles);
 
@@ -27,4 +28,6 @@ function Content() {
     );
 }
 
-export default Content;
+const ContentWithLoading = withLoading(Content);
+
+export default ContentWithLoading;

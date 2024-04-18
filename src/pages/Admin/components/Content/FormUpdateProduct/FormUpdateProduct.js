@@ -32,10 +32,10 @@ function FormUpdateProduct({ productUpdate }) {
     const [categoryId, setCategoryId] = useState('');
 
     //Handle input file
-    const handlePathImage = (e) => {
-        const file = e.target.files[0].name;
-        setImageName(file);
-    };
+    // const handlePathImage = (e) => {
+    //     const file = e.target.files[0].name;
+    //     setImageName(file);
+    // };
 
     // console.log(productInput);
 
@@ -65,7 +65,7 @@ function FormUpdateProduct({ productUpdate }) {
         setInfo('');
         setDetail('');
         setRatingStar('');
-        setImageName(null);
+        setImageName('');
         setManufacturerId('--Choose Manufacturer--');
         setCategoryId('--Choose Category--');
     };
@@ -149,7 +149,12 @@ function FormUpdateProduct({ productUpdate }) {
                     </div>
                     <div className={cx('field')}>
                         <label>Image</label>
-                        <input type="file" onChange={handlePathImage} />
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                setImageName(e.target.value);
+                            }}
+                        />
                     </div>
                     <div className={cx('field')}>
                         <label>Manufacturer</label>

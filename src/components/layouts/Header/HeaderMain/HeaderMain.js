@@ -11,6 +11,7 @@ import Button from '~/components/common/Button';
 import { Modal } from 'antd';
 import UserLogin from '../../UserLogin';
 import PopupLogin from '~/components/common/Modal/Popup/PopupLogin';
+import QttProductsCart from '~/utils/helpers/QttProductsCart';
 
 const cx = classNames.bind(styles);
 
@@ -24,9 +25,7 @@ function HeaderMain() {
 
     useEffect(() => {
         if (localStorage.getItem('Account')) {
-            setTimeout(() => {
-                setAccount(true);
-            }, 1000);
+            setAccount(true);
         }
     }, []);
 
@@ -61,6 +60,7 @@ function HeaderMain() {
                             to={'/cart'}
                             className={cx('cart')}
                             leftIcon={<FontAwesomeIcon icon={faCartShopping} />}
+                            rightIcon={<QttProductsCart />}
                         >
                             Giỏ hàng
                         </Button>

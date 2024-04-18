@@ -27,17 +27,17 @@ function FormCreateProduct() {
     const [info, setInfo] = useState('');
     const [detail, setDetail] = useState('');
     const [ratingStar, setRatingStar] = useState('');
-    const [imageName, setImageName] = useState(null);
+    const [imageName, setImageName] = useState('');
     const [manufacturerId, setManufacturerId] = useState('');
     const [categoryId, setCategoryId] = useState('');
 
-    //Handle input file
+    // //Handle input file
 
-    const handlePathImage = (e) => {
-        const file = e.target.files[0].name;
-        // console.log(file);
-        setImageName(file);
-    };
+    // const handlePathImage = (e) => {
+    //     const file = e.target.files[0].name;
+    //     // console.log(file);
+    //     setImageName(file);
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -65,7 +65,7 @@ function FormCreateProduct() {
         setInfo('');
         setDetail('');
         setRatingStar('');
-        setImageName(null);
+        setImageName('');
         setManufacturerId('');
         setCategoryId('');
     };
@@ -149,7 +149,12 @@ function FormCreateProduct() {
                     </div>
                     <div className={cx('field')}>
                         <label>Image</label>
-                        <input type="file" onChange={handlePathImage} />
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                setImageName(e.target.value);
+                            }}
+                        />
                     </div>
                     <div className={cx('field')}>
                         <label>Manufacturer</label>

@@ -5,6 +5,8 @@ import styles from './MainMenu.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionFetchListCategoryApi } from '~/actions/CategoryAction';
 import { actionFetchListManufacturerApi } from '~/actions/ManufacturerAction';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -42,6 +44,7 @@ function MainMenu() {
             onMouseLeave={handleCategoryMouseLeave}
         >
             {cate.name}
+            <FontAwesomeIcon icon={faChevronRight} />
             {hoveredCategory === index && <ul className={cx('manu-list')}>{manufacturerMenu}</ul>}
         </li>
     ));

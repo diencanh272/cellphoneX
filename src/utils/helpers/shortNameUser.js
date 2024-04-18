@@ -20,12 +20,14 @@ function ShortNameUser() {
     let shortName = '';
 
     if (firstCharacters.length > 2) {
-        shortName = `${firstCharacters[0]}${firstCharacters[firstCharacters.length - 1]}`;
+        shortName = `${firstCharacters[0][0]}${firstCharacters[firstCharacters[0].length - 1]}`;
     } else if (firstCharacters.length === 2) {
         shortName = `${firstCharacters[0]}${firstCharacters[1]}`;
     } else if (firstCharacters.length === 1) {
         shortName = firstCharacters[0];
     }
+
+    // console.log(shortName);
 
     return <p>{shortName}</p>;
 }

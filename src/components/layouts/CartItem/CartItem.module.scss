@@ -91,3 +91,8 @@
         text-align: center;
     }
 }
+
+.disabled {
+    cursor: no-drop;
+    opacity: 0.3;
+}
