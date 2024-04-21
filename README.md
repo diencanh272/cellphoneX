@@ -83,9 +83,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 7.Xử lý loading bằng HOC(**10**)(**OK**)(**Content Admin**)
 
-# 8.Fix lại Link bằng useRoutMatch() lấy id truyền cho product detail (**OK**)
+# 8.Fix lại Link bằng useParam() lấy id truyền cho product detail (**OK**)
 
-# 9.link ảnh(**FAIL**)(cần chỉnh sửa)
+# 9.link ảnh(**Firebase**)(cần chỉnh sửa)
 
 # 10.Sử lý Sidebar admin (**3**)(**OK**)
 
@@ -117,4 +117,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 24. set component did mount(**13**)
 
-# 25. Add to Cart(**11**)(**Doing**)
+# 25. Add to Cart(**11**)(**OK**)(form user)

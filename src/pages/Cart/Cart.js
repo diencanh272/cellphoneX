@@ -22,27 +22,7 @@ function Cart() {
                             Giỏ hàng
                         </Button>
                     </div>
-                    <div className={cx('list-cart')}>
-                        <div className={cx('select-all')}>
-                            <input type="checkbox" id="checkAll" />
-                            <label htmlFor="checkAll">Chọn tất cả</label>
-                        </div>
-                        <div className={cx('list-product')}>
-                            <CartItem />
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('price-temp-wrap')}>
-                    <div className={cx('price-temp')}>
-                        <p>Tạm tính</p>
-                        <span>0đ</span>
-                    </div>
-
-                    <div className={cx('action-buy')}>
-                        <Button primary to={'/cart/payment'}>
-                            Mua ngay
-                        </Button>
-                    </div>
+                    <CartItem />
                 </div>
             </div>
         </div>

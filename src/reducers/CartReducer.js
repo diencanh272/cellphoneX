@@ -1,3 +1,4 @@
+// Redux reducer
 import * as TYPES from '~/utils/constants/Constants';
 
 const initialState = {
@@ -10,16 +11,39 @@ const initialState = {
 export const getCartReducer = (state = initialState, action) => {
     switch (action.type) {
         case TYPES.ADD_TO_CART:
-            state.listCartWrap.qtt = state.listCartWrap.qtt + 1;
-            state.listCartWrap.listCart.push(action.payload);
-            localStorage.setItem('ProductCart', JSON.stringify(state));
-            state = JSON.parse(localStorage.getItem('ProductCart'));
-            return { ...state };
+            const newState = { ...state };
+
+            const existingProductIndex = newState.listCartWrap.listCart.findIndex(
+                (product) => product.id === action.payload.id,
+            );
+
+            if (existingProductIndex !== -1) {
+                newState.listCartWrap.listCart[existingProductIndex].quantity += 1;
+            } else {
+                newState.listCartWrap.listCart.push({ ...action.payload, quantity: 1 });
+            }
+
+            newState.listCartWrap.qtt = newState.listCartWrap.listCart.reduce(
+                (total, product) => total + product.quantity,
+                0,
+            );
+            localStorage.setItem('ProductCart', JSON.stringify(newState.listCartWrap));
+
+            return newState;
 
         case TYPES.DELETE_PRODUCT_CART:
-            return { ...state };
+            const filteredList = state.listCartWrap.listCart.filter((product) => product.id !== action.payload);
+            const newCart = {
+                ...state.listCartWrap,
+                listCart: filteredList,
+                qtt: filteredList.reduce((total, product) => total + product.quantity, 0),
+            };
+
+            localStorage.setItem('ProductCart', JSON.stringify(newCart));
+
+            return { ...state, listCartWrap: newCart };
 
         default:
-            return { ...state };
+            return state;
     }
 };

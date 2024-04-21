@@ -46,7 +46,6 @@ function FormLogin() {
             console.log(checkAccount);
             console.log('login success');
             timeNavigate();
-            //TODO HOC loading
         } else if (checkAccount === undefined) {
             console.log('Account not exist');
             setLogin(false);

@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionFetchListProductApi } from '~/actions/ProductAction';
 import { actionAddToCart } from '~/actions/CartAction';
+import { Modal } from 'antd';
 
 const cx = classNames.bind(styles);
 
@@ -34,9 +35,19 @@ function Detail() {
     const findProductByParam = products.find((prd) => prd.name === name);
     // console.log(findProductByParam);
 
+    //!Popup Add To Cart Success Start
+    const success = () => {
+        Modal.success({
+            content: 'Thêm mới sản phẩm thành công',
+        });
+    };
     const handleAddToCart = () => {
         dispatch(actionAddToCart(findProductByParam));
+        setTimeout(() => {
+            success();
+        }, 500);
     };
+    //!Popup Add To Cart Success End
 
     return (
         <>
@@ -58,11 +69,11 @@ function Detail() {
                         <div className={cx('offset-1', 'col-5', 'info')}>
                             <div className={cx('feature')}>
                                 <ul>
-                                    <li>{findProductByParam.detail}</li>
-                                    <li>{findProductByParam.info}</li>
-                                    <li>{findProductByParam.manufacturerName}</li>
+                                    <li>Detail:{findProductByParam.detail}</li>
+                                    <li>Information: {findProductByParam.info}</li>
+                                    <li>Nhà sản xuất: {findProductByParam.manufacturerName}</li>
                                     <li>{findProductByParam.categoryName}</li>
-                                    <li>{findProductByParam.price}</li>
+                                    <li>Giá: {`${findProductByParam.price}₫`}</li>
                                 </ul>
                             </div>
 

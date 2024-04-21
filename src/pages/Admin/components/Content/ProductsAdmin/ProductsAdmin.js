@@ -69,7 +69,7 @@ function ProductsAdmin() {
                 <td className={cx('col-3')}>{product.name}</td>
                 <td className={cx('col-2')}>{product.categoryName}</td>
                 <td className={cx('col-2')}>{product.manufacturerName}</td>
-                <td className={cx('col-2')}>{product.price}</td>
+                <td className={cx('col-2')}>{`${product.price}₫`}</td>
                 <td className={cx('col-1', 'btn')}>
                     <Button
                         leftIcon={

@@ -37,7 +37,7 @@ function ProductCard({ categoryName }) {
                         <Button to={`/detail/${product.name}`}>{product.name}</Button>
                     </h3>
                     <div className={cx('price')}>
-                        <span className={cx('current')}>{product.price}</span>
+                        <span className={cx('current')}>{`${product.price}₫`}</span>
                         <span className={cx('old')}>{product.price}</span>
                     </div>
                     <div className={cx('rating')}>

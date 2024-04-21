@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './TooltipModal.module.scss';
 import Button from '../Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,16 +9,22 @@ import ShortNameUser from '~/utils/helpers/shortNameUser';
 const cx = classNames.bind(styles);
 
 function TooltipModal() {
+    const [account, setAccount] = useState(null);
+
+    useEffect(() => {
+        const storedAccount = JSON.parse(localStorage.getItem('Account'));
+        setAccount(storedAccount);
+    }, []);
+
     const handleLogOut = () => {
         if (localStorage && localStorage.getItem('Account')) {
-            localStorage.removeItem('Account');
+            localStorage.clear();
+            setAccount(null);
         }
     };
 
-    const getAccount = JSON.parse(localStorage.getItem('Account'));
-
     const activeAdmin = () => {
-        if (getAccount.status === 'ACTIVE') {
+        if (account && account.status === 'ACTIVE') {
             console.log('active admin');
             return (
                 <Button
@@ -42,8 +48,8 @@ function TooltipModal() {
                 <ShortNameUser />
             </div>
             <div className={cx('top-right')}>
-                <span className={cx('fullname')}>{getAccount.fullname}</span>
-                <span className={cx('username')}>{`@${getAccount.username}`}</span>
+                <span className={cx('fullname')}>{account ? account.fullname : ''}</span>
+                <span className={cx('username')}>{account ? `@${account.username}` : ''}</span>
             </div>
         </>
     );
@@ -60,17 +66,17 @@ function TooltipModal() {
                         large
                         leftIcon={<FontAwesomeIcon icon={faUserTie} />}
                     >
-                        Tài khoản cá nhân
+                        Tài khoản cá nhân
                     </Button>
                 </li>
                 <li className={cx('item')}>
                     <Button className={cx('btn')} text large leftIcon={<FontAwesomeIcon icon={faTruckFast} />}>
-                        Quản lý đơn hàng
+                        Quản lý đơn hàng
                     </Button>
                 </li>
                 <li className={cx('item')}>
                     <Button className={cx('btn')} text large leftIcon={<FontAwesomeIcon icon={faBell} />}>
-                        Thông báo
+                        Thông báo
                     </Button>
                 </li>
                 <li className={cx('item')}>{activeAdmin()}</li>
@@ -85,7 +91,7 @@ function TooltipModal() {
                             window.location.reload();
                         }}
                     >
-                        Đăng xuất tài khoản
+                        Đăng xuất tài khoản
                     </Button>
                 </li>
             </ul>

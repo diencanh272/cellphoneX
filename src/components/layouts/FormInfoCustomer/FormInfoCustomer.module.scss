@@ -54,12 +54,12 @@
 
         &:focus {
             transition: 0.25s ease;
-            border-bottom-color: #1e4bc9;
+            border-bottom-color: var(--primary-color);
         }
 
         &:focus + .title {
             opacity: 1;
-            color: #1e4bc9;
+            color: var(--primary-color);
         }
     }
 }
