@@ -44,6 +44,7 @@ function CartItem() {
         localStorage.setItem('ProductCart', JSON.stringify(updatedDataCart));
     };
 
+    //Delete Product cart start
     const success = () => {
         Modal.success({
             content: 'Xoá sản phẩm khỏi giỏ hàng',
@@ -54,6 +55,7 @@ function CartItem() {
         dispatch(actionDeleteProductCart(id));
         success();
     };
+    //Delete Product cart end
 
     const RenderListProductInCart = () =>
         cartItems.map((cartItem, index) => (

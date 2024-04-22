@@ -79,7 +79,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 5.Breadcrumbs
 
-# 6.Search(**12**)
+# 6.Search Home , Admin(**13**)
 
 # 7.Xử lý loading bằng HOC(**10**)(**OK**)(**Content Admin**)
 
@@ -93,7 +93,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 12.Thêm manufacturer vào main menu(**7**)(**OK**)
 
-# 13.Filter HotSale(x)
+# 13.Filter List Product(**14**)
 
 # 14.filter category product(**5**)(**OK**)
 
@@ -115,6 +115,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 23. Mã hóa password (x)(Token)
 
-# 24. set component did mount(**13**)
+<!-- # 24. set component did mount(**14**) -->
 
 # 25. Add to Cart(**11**)(**OK**)(form user)
+
+# 26.Kiểm tra đăng nhập (**12**)(thêm vào giỏ hàng,yêu thích,mua ngay)(**OK**)
+
+# 26.Responsive (**15**)

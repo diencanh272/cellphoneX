@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './AccountAdmin.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Button from '~/components/common/Button';
 import { actionFetchListAccountApi } from '~/actions/AccountAction';
+import Pagination from '~/components/common/Pagination';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +18,16 @@ function AccountAdmin() {
         dispatch(actionFetchListAccountApi());
     }, [dispatch]);
 
-    const account = accounts.map((acc, index) => (
+    //Pagination start
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productPerPage] = useState(5);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const indexOfLastProductPerPage = currentPage * productPerPage;
+    const indexOfFirstProductPerPage = indexOfLastProductPerPage - productPerPage;
+    const currentProductsOnPage = accounts.slice(indexOfFirstProductPerPage, indexOfLastProductPerPage);
+    //Pagination end
+
+    const account = currentProductsOnPage.map((acc, index) => (
         <tr className={cx('row')} key={index}>
             <td className={cx('col-1')}>{acc.id}</td>
             <td title={acc.email} className={cx('col-2', 'word-clamp')}>
@@ -57,7 +67,14 @@ function AccountAdmin() {
                     </tr>
                 </thead>
                 <tbody className={cx('table-main')}>{account}</tbody>
-                <tfoot className={cx('table-footer')}></tfoot>
+                <tfoot className={cx('table-footer')}>
+                    <Pagination
+                        currentPage={currentPage}
+                        productPerPage={productPerPage}
+                        paginate={paginate}
+                        totalProduct={accounts.length}
+                    />
+                </tfoot>
             </table>
         </div>
     );

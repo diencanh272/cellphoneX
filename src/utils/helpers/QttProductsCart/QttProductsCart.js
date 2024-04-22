@@ -12,6 +12,7 @@ function QttProductsCart() {
     };
 
     dataCart = useSelector((state) => state.cart);
+
     // console.log(dataCart);
     // if (localStorage && localStorage.getItem('ProductCart')) {
     //     dataCart = JSON.parse(localStorage.getItem('ProductCart'));

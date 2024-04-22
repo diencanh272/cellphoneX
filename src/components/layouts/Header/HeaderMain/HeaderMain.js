@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './HeaderMain.module.scss';
@@ -18,6 +18,7 @@ const cx = classNames.bind(styles);
 function HeaderMain() {
     const [modalOpen, setModalOpen] = useState(false);
     const [account, setAccount] = useState(false);
+    const navigate = useNavigate();
     const location = useLocation();
     const path = location.pathname === '/account';
 
@@ -28,6 +29,13 @@ function HeaderMain() {
             setAccount(true);
         }
     }, []);
+    const handleClickCart = () => {
+        if (localStorage && localStorage.getItem('Account')) {
+            navigate('/cart');
+        } else {
+            setModalOpen(true);
+        }
+    };
 
     const UserLoginButton = () =>
         account ? (
@@ -57,10 +65,10 @@ function HeaderMain() {
 
                     <div className={cx('info', 'col-4')}>
                         <Button
-                            to={'/cart'}
                             className={cx('cart')}
                             leftIcon={<FontAwesomeIcon icon={faCartShopping} />}
                             rightIcon={<QttProductsCart />}
+                            onClick={handleClickCart}
                         >
                             Giỏ hàng
                         </Button>

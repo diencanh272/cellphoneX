@@ -15,14 +15,18 @@ function InfoPayment() {
     if (localStorage && localStorage.getItem('ProductCart')) {
         dataCart = JSON.parse(localStorage.getItem('ProductCart'));
     }
-    console.log(dataCart);
+    // console.log(dataCart);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
 
     return (
         <>
             {dataCart.qtt === 0 ? (
                 <span>Không có sản phẩm nào trong giỏ hàng</span>
             ) : (
-                <>
+                <form onSubmit={handleSubmit}>
                     <div className={cx('listBuy')}>
                         <CartItem />
                     </div>
@@ -42,12 +46,12 @@ function InfoPayment() {
                             </span>
                         </div>
                         <div className={cx('action')}>
-                            <Button to={'/cart/accurate-payment'} className={cx('action-buy')} primary>
+                            <Button to={'/cart/accurate-payment'} className={cx('action-buy')} primary type="submit">
                                 Tiếp tục
                             </Button>
                         </div>
                     </div>
-                </>
+                </form>
             )}
         </>
     );

@@ -4,7 +4,10 @@ function ShortNameUser() {
 
     const splittedStr = [];
 
-    let text = getAccount.fullname;
+    let text = '';
+    if (getAccount !== -1) {
+        text = getAccount.fullname;
+    }
 
     // console.log(text);
     const myArray = text.split(' ');
