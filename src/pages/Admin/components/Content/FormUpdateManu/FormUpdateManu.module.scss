@@ -1,0 +1,52 @@
+.wrap {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+form {
+    p {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--text-color-default);
+        margin-bottom: 12px;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        color: var(--text-color-default);
+        font-weight: 500;
+    }
+
+    input,
+    textarea,
+    select {
+        border: 1px solid rgba(145, 158, 171, 0.239);
+        padding: 10px;
+
+        &:focus {
+            box-shadow: var(--box-shadow-input);
+        }
+    }
+    textarea {
+        resize: vertical;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
+
+.field + .field {
+    margin-top: 16px;
+}
+
+.form-footer {
+    margin-top: 20px;
+}

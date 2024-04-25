@@ -5,11 +5,13 @@ import Button from '../Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faBell, faGears, faTruckFast, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import ShortNameUser from '~/utils/helpers/shortNameUser';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function TooltipModal() {
     const [account, setAccount] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const storedAccount = JSON.parse(localStorage.getItem('Account'));
@@ -21,11 +23,14 @@ function TooltipModal() {
             localStorage.clear();
             setAccount(null);
         }
+        setTimeout(() => {
+            navigate('/');
+        }, 1500);
     };
 
     const activeAdmin = () => {
         if (account && account.status === 'ACTIVE') {
-            console.log('active admin');
+            // console.log('active admin');
             return (
                 <Button
                     className={cx('btn')}
@@ -38,7 +43,7 @@ function TooltipModal() {
                 </Button>
             );
         } else {
-            console.log('no active');
+            // console.log('no active');
         }
     };
 
@@ -70,7 +75,13 @@ function TooltipModal() {
                     </Button>
                 </li>
                 <li className={cx('item')}>
-                    <Button className={cx('btn')} text large leftIcon={<FontAwesomeIcon icon={faTruckFast} />}>
+                    <Button
+                        to={'/order'}
+                        className={cx('btn')}
+                        text
+                        large
+                        leftIcon={<FontAwesomeIcon icon={faTruckFast} />}
+                    >
                         Quản lý đơn hàng
                     </Button>
                 </li>

@@ -63,7 +63,9 @@ export const actionUpdateProductApi = (productId, updatedProduct) => {
     return (dispatch) => {
         return updateProduct(productId, updatedProduct)
             .then((response) => {
-                dispatch(actionFetchListProductApi(response));
+                dispatch(actionUpdateProductDispatch(response));
+                console.log('Cập nhật thành công!');
+                console.log(response);
             })
             .catch((error) => {
                 return error;
@@ -90,5 +92,12 @@ export const actionDeleteProductDispatch = (productId) => {
     return {
         type: TYPES.DELETE_PRODUCT,
         payload: productId,
+    };
+};
+
+export const actionUpdateProductDispatch = (prd) => {
+    return {
+        type: TYPES.UPDATE_PRODUCT,
+        payload: prd,
     };
 };

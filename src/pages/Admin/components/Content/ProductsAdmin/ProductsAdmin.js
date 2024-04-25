@@ -44,7 +44,7 @@ function ProductsAdmin() {
     const confirmDelete = () => {
         dispatch(actionDeleteProductApi(productId))
             .then((response) => {
-                dispatch(actionFetchListProductApi(response));
+                dispatch(actionFetchListProductApi());
             })
             .catch((error) => {
                 return error;
@@ -56,7 +56,7 @@ function ProductsAdmin() {
     const handleEdit = (productId) => {
         setModalOpenUpdate(true);
         const productUpdate = products.find((product) => product.id === productId);
-        setProductUpdate({ productUpdate });
+        setProductUpdate(productUpdate);
     };
 
     const renderProductAdmin = currentProductsOnPage.map((product, index) => {
@@ -122,6 +122,7 @@ function ProductsAdmin() {
 
             <Modal centered open={modalOpenDelete} footer={null} onCancel={() => setModalOpenDelete(false)} width={350}>
                 <PopupConfirm
+                    title={'sản phẩm'}
                     productName={productName}
                     btnYes={confirmDelete}
                     btnNo={() => setModalOpenDelete(false)}

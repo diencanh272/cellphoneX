@@ -5,7 +5,7 @@ const initialState = [];
 export const getAllProductReducer = (state = initialState, action) => {
     switch (action.type) {
         case TYPES.FETCH_PRODUCT_LIST:
-            state = action.payload.content;
+            state = action.payload;
             return [...state];
 
         case TYPES.DELETE_PRODUCT:

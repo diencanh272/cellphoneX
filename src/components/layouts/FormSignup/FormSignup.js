@@ -47,39 +47,39 @@ function FormSignup() {
     //!! Hàm kiểm tra pattern end
 
     const SignupSchema = Yup.object().shape({
-        fullname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+        fullname: Yup.string().min(2, 'Tên của bạn quá ngắn!').max(50, 'Tên của bạn quá dài!').required('Bắt buộc'),
         username: Yup.string()
-            .min(2, 'Too Short!')
-            .max(20, 'Too Long!')
-            .matches(/^[a-zA-Z0-9]+$/, 'No match')
-            .required('Required')
-            .test('check-email-exist', 'User đã tồn tại ', (value) => checkUsernameExist(value)),
+            .min(2, 'Tên tài khoản quá ngắn!')
+            .max(20, 'Tên tài khoản quá dài!')
+            .matches(/^[a-zA-Z0-9]+$/, 'Tên là kí tự a-z,A-Z,0-9')
+            .required('Bắt buộc')
+            .test('check-email-exist', 'Tên tài khoản đã tồn tại ', (value) => checkUsernameExist(value)),
 
         //1viet hoa, 1 so
         mobile: Yup.string()
-            .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, 'No match')
-            .required('Required')
-            .test('check-email-exist', 'Số điện thoại đã tồn tại ', (value) => checkMobileExist(value)),
+            .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, 'Kiểm tra lại số điện thoại')
+            .required('Bắt buộc')
+            .test('check-email-exist', 'Số điện thoại đã đăng kí ', (value) => checkMobileExist(value)),
 
         //k có kí tự đặc biệt
         email: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .email('Invalid email')
-            .required('Required')
+            .min(2, 'Email quá ngắn!')
+            .max(50, 'Email quá dài!')
+            .email('Email không hợp lệ!')
+            .required('Bắt buộc')
             .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email không hợp lệ!..Eg:a@gmail.com')
             .test('check-email-exist', 'Email đã tồn tại ', (value) => checkEmailExist(value)),
         password: Yup.string()
-            .min(6, 'Too Short!')
-            .max(20, 'Too Long!')
+            .min(6, 'Mật khẩu quá ngắn!')
+            .max(20, 'Mật khẩu quá dài!')
             .matches(
                 /^(?=.*[A-Z])(?=.*\d).+/,
                 'Mật khẩu từ 6-20 kí tự, bao gồm ít nhất 1 chữ hoa,1 chữ thường, 1 chữ số',
             )
-            .required('Required'),
+            .required('Bắt buộc!'),
         avatarImageName: Yup.string(),
-        address: Yup.string().required('Required'),
-        createDate: Yup.string().required('Required'),
+        address: Yup.string().required('Bắt buộc!'),
+        createDate: Yup.string().required('Bắt buộc!'),
     });
 
     return (

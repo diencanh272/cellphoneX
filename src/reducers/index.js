@@ -4,6 +4,7 @@ import { getAllCategoryReducer } from './CategoryReducer';
 import { getAllManufacturerReducer } from './ManufacturerReducer';
 import { getAllAccountReducer } from './AccountReducer';
 import { getCartReducer } from './CartReducer';
+import { getOrderReducer } from './OrderReducer';
 
 const rootReducer = combineReducers({
     products: getAllProductReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     manufacturers: getAllManufacturerReducer,
     accounts: getAllAccountReducer,
     cart: getCartReducer,
+    order: getOrderReducer,
 });
 
 export default rootReducer;

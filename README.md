@@ -109,7 +109,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 20. AccountAdmin(**OK**)
 
-# 21. Show star product
+# 21. Show star product(**OK**)
 
 # 22. Validate Form(**9**) (**OK Form Signup**)
 
@@ -117,8 +117,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <!-- # 24. set component did mount(**14**) -->
 
-# 25. Add to Cart(**11**)(**OK**)(form user)
-
 # 26.Kiểm tra đăng nhập (**12**)(thêm vào giỏ hàng,yêu thích,mua ngay)(**OK**)
 
 # 26.Responsive (**15**)
+
+**-------------------------------------------------------**
+
+# 25. Add to Cart(**11**)(**SỬA**)(thêm 1 field vào account)
+
+# 27.Phân trang hôm với main menu (**15**)
+
+# 28.CRUD với các danh mục admin (**16**)(**DOING**)
+
+# 29.filter và search admin (**17**)
+
+# 30.Quản lí đơn hàng với admin (**18**)
+
+# 31. Validate tất cả các Form(**19**)

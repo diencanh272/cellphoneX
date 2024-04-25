@@ -2,16 +2,20 @@ import { findLevel1ById, findLevel1ByName, level1s } from 'dvhcvn';
 import classNames from 'classnames/bind';
 
 import styles from './FormAddress.module.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import FormAddressContext from '~/utils/contexts/context';
 
 const cx = classNames.bind(styles);
 
 function FormAddress() {
+    const { setFormData } = useContext(FormAddressContext);
     // console.log(level1s);
 
     const [selectedProvince, setSelectedProvince] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
-    const [selectedWard, setSelectedWard] = useState('');
+    const [setSelectedWard] = useState('');
+    const [apartment, setApartment] = useState('');
+    const [note, setNote] = useState('');
     // Lấy danh sách các tỉnh/thành phố từ dữ liệu level1s
     const provinces = level1s.map((lv1) => findLevel1ById(lv1.id));
     let districts = [];
@@ -22,6 +26,7 @@ function FormAddress() {
     const handleProvinceChange = (event) => {
         const selectedProvinceName = event.target.value;
         setSelectedProvince(selectedProvinceName);
+        setFormData((prevData) => ({ ...prevData, selectedProvince: selectedProvinceName }));
         // console.log(selectedProvinceName);
     };
     //! Provinces end
@@ -30,6 +35,8 @@ function FormAddress() {
     const handleDistrictChange = (event) => {
         const selectedDistrictName = event.target.value;
         setSelectedDistrict(selectedDistrictName);
+        setFormData((prevData) => ({ ...prevData, selectedDistrict: selectedDistrictName }));
+
         // console.log(selectedProvinceName);
     };
 
@@ -39,13 +46,14 @@ function FormAddress() {
     if (provinceSelected) {
         districts = provinceSelected.children;
     }
-
     //! Districts end
 
     //! Wards start
     const handleWardChange = (event) => {
         const selectedWardName = event.target.value;
         setSelectedWard(selectedWardName);
+        setFormData((prevData) => ({ ...prevData, selectedWard: selectedWardName }));
+
         // console.log(selectedProvinceName);
     };
     // Tìm lại huyện đã được chọn
@@ -55,6 +63,16 @@ function FormAddress() {
         wards = districtSelected.children;
     }
     //! Wards end
+
+    const handleApartment = (e) => {
+        setApartment(e.target.value);
+        setFormData((prevData) => ({ ...prevData, apartment: apartment }));
+    };
+
+    const handleNote = (e) => {
+        setNote(e.target.value);
+        setFormData((prevData) => ({ ...prevData, note: note }));
+    };
 
     //! Render
 
@@ -107,13 +125,25 @@ function FormAddress() {
                     <label className={cx('title')}>Phường / Xã</label>
                 </div>
                 <div className={cx('box-input')}>
-                    <input className={cx('input')} type="text" placeholder="Số nhà , tên đường" />
+                    <input
+                        className={cx('input')}
+                        type="text"
+                        placeholder="Số nhà , tên đường"
+                        value={apartment}
+                        onChange={handleApartment}
+                    />
                     <label className={cx('title')}>Địa chỉ</label>
                 </div>
             </div>
             <div className={cx('box-input-wrap')}>
                 <div className={cx('box-input')}>
-                    <input className={cx('input')} type="text" placeholder="Ghi chú khác (nếu có)" />
+                    <input
+                        className={cx('input')}
+                        type="text"
+                        placeholder="Ghi chú khác (nếu có)"
+                        value={note}
+                        onChange={handleNote}
+                    />
                     <label className={cx('title')}>Ghi chú</label>
                 </div>
             </div>

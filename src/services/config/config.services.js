@@ -1,15 +1,11 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:8080/api/v1',
+    baseURL: 'http://localhost:8008',
     timeout: 5000,
     responseType: 'json',
     headers: {
         'content-type': 'application/json',
-    },
-    auth: {
-        username: 'admin',
-        password: '123456',
     },
 });
 

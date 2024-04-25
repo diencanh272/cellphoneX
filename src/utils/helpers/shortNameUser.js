@@ -1,5 +1,9 @@
 function ShortNameUser() {
-    const getAccount = JSON.parse(localStorage.getItem('Account'));
+    let getAccount = { fullname: '' };
+
+    if (localStorage && localStorage.getItem('Account')) {
+        getAccount = JSON.parse(localStorage.getItem('Account'));
+    }
     // console.log(getAccount);
 
     const splittedStr = [];

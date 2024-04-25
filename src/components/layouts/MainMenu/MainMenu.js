@@ -7,6 +7,8 @@ import { actionFetchListCategoryApi } from '~/actions/CategoryAction';
 import { actionFetchListManufacturerApi } from '~/actions/ManufacturerAction';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import Button from '~/components/common/Button';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -30,11 +32,13 @@ function MainMenu() {
         setHoveredCategory(null);
     };
 
-    const manufacturerMenu = manufacturers.map((manu, index) => (
-        <li className={cx('manu-item')} key={index}>
-            {manu.name}
-        </li>
-    ));
+    const ManufacturerMenu = ({ cateName }) =>
+        manufacturers.map((manu, index) => (
+            <li className={cx('manu-item')} key={index}>
+                {/* {manu.name} */}
+                <Link to={`/${cateName}/${manu.name}`}>{manu.name}</Link>
+            </li>
+        ));
 
     const categoryMenu = categories.map((cate, index) => (
         <li
@@ -43,9 +47,19 @@ function MainMenu() {
             onMouseEnter={() => handleCategoryMouseEnter(index)}
             onMouseLeave={handleCategoryMouseLeave}
         >
-            {cate.name}
-            <FontAwesomeIcon icon={faChevronRight} />
-            {hoveredCategory === index && <ul className={cx('manu-list')}>{manufacturerMenu}</ul>}
+            <Button
+                to={`/${cate.name}`}
+                className={cx('category-link')}
+                rightIcon={<FontAwesomeIcon icon={faChevronRight} />}
+            >
+                {cate.name}
+
+                {hoveredCategory === index && (
+                    <ul className={cx('manu-list')}>
+                        <ManufacturerMenu cateName={cate.name} />
+                    </ul>
+                )}
+            </Button>
         </li>
     ));
 

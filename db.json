@@ -1,0 +1,337 @@
+{
+  "accounts": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "username": "admin",
+      "fullname": "admin",
+      "avatarImageName": "Avatar1.jpg",
+      "mobile": "0336984888",
+      "address": "Bắc Từ Liêm - Hà Nội",
+      "createDate": "2021-03-04",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "2",
+      "email": "Email2@gmail.com",
+      "username": "Username2",
+      "fullname": "Fullname2",
+      "avatarImageName": "ImgMobile4.png",
+      "mobile": "0988822222",
+      "address": "Cầu Giấy - Hà Nội",
+      "createDate": "2020-06-04",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "3",
+      "email": "Email3@gmail.com",
+      "username": "Username3",
+      "fullname": "Fullname3",
+      "avatarImageName": "ImgMobile3.png",
+      "mobile": "0336030333",
+      "address": "Nam Từ Liêm- Hà Nội",
+      "createDate": "2018-03-03",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "4",
+      "email": "ozil@gmail.com",
+      "username": "Ozil",
+      "fullname": "Ozil",
+      "avatarImageName": "Phai-80x270-3.png",
+      "mobile": "0326333666",
+      "address": "German",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "5",
+      "email": "zidane@gmail.com",
+      "username": "Zidane",
+      "fullname": "Zidane",
+      "avatarImageName": "header-phai-tgdd-248x78.png",
+      "mobile": "0333666888",
+      "address": "France",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "6",
+      "email": "modric@gmail.com",
+      "username": "Modric",
+      "fullname": "Modric",
+      "avatarImageName": "chibi2.webp",
+      "mobile": "0555888666",
+      "address": "Croatia",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "7",
+      "email": "diaz@gmail.com",
+      "username": "Diaz",
+      "fullname": "Diaz",
+      "avatarImageName": "hotsale-s24-sis-mobile.webp",
+      "mobile": "0123456789",
+      "address": "Maloch",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "8",
+      "email": "neymar@gmail.com",
+      "username": "Neymar",
+      "fullname": "Neymar",
+      "avatarImageName": "xiaomi-14-pre-xanh-la.webp",
+      "mobile": "0987654321",
+      "address": "Brazil",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "9",
+      "email": "bale@gmail.com",
+      "username": "Bale",
+      "fullname": "Bale",
+      "avatarImageName": "ss-s24-ultra-xam-222.webp",
+      "mobile": "0555444333",
+      "address": "Wales",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "10",
+      "email": "pedro@gmail.com",
+      "username": "Pedro",
+      "fullname": "Pedro",
+      "avatarImageName": "banner3.svg",
+      "mobile": "0852963741",
+      "address": "Italia",
+      "createDate": "2024-04-10",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "11",
+      "email": "messi@gmail.com",
+      "username": "Messi",
+      "fullname": "Lionel Messi",
+      "avatarImageName": "logo.png",
+      "mobile": "064823974",
+      "address": "Argentina",
+      "createDate": "2024-04-12",
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "12",
+      "email": "zalatan@gmail.com",
+      "username": "Zalatan",
+      "fullname": "LE DIEN CANH",
+      "avatarImageName": "logo.png",
+      "mobile": "0336686526",
+      "address": "Hồng Phương Yên Lạc",
+      "createDate": "2024-04-17",
+      "status": "NOT_ACTIVE"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Apple MacBook Air M1 256GB 2020 I",
+      "price": "22.990.000",
+      "info": "Apple MacBook Air M1 256GB 2020 I",
+      "detail": "Apple MacBook Air M1 256GB 2020 I",
+      "ratingStar": 5,
+      "imageName": "https://shorturl.at/ahN18",
+      "manufacturerName": "APPLE",
+      "categoryName": "Laptop"
+    },
+    {
+      "id": 2,
+      "name": "Macbook Air M3 13 inch 2024 8GB - 256GB",
+      "price": "27.990.000",
+      "info": "Macbook Air M3 13 inch 2024",
+      "detail": "Macbook Air M3 13 inch 2024 8GB - 256GB",
+      "ratingStar": 5,
+      "imageName": "https://shorturl.at/sBCF8",
+      "manufacturerName": "APPLE",
+      "categoryName": "Laptop"
+    },
+    {
+      "id": 3,
+      "name": "Laptop HP Pavilion",
+      "price": "16.490.000",
+      "info": "Laptop HP Pavilion 14",
+      "detail": "Laptop HP Pavilion 14",
+      "ratingStar": 5,
+      "imageName": "https://shorturl.at/clnoC",
+      "manufacturerName": "SAMSUNG",
+      "categoryName": "Laptop"
+    },
+    {
+      "id": 4,
+      "name": "Laptop Gaming Acer Nitro 5",
+      "price": "20.190.000",
+      "info": "Laptop Gaming Acer Nitro 5",
+      "detail": "Laptop Gaming Acer Nitro 5 Tiger",
+      "ratingStar": 5,
+      "imageName": "https://shorturl.at/nwBHP",
+      "manufacturerName": "XIAOMI",
+      "categoryName": "Laptop"
+    },
+    {
+      "id": 5,
+      "name": "Samsung Galaxy Tab S9 Ultra",
+      "price": "23.290.000",
+      "info": "Samsung Galaxy Tab S9 Ultra 12GB 512GB   ",
+      "detail": "Samsung Galaxy Tab S9 Ultra 12GB 512GB ",
+      "ratingStar": 5,
+      "imageName": "https://t.ly/UY-J5",
+      "manufacturerName": "SAMSUNG",
+      "categoryName": "Tablet"
+    },
+    {
+      "id": 6,
+      "name": "iPad Pro 2022 M2 128GB",
+      "price": "20.690.000",
+      "info": "iPad Pro 11 inch 2022 M2 Wifi 128GB",
+      "detail": "iPad Pro 11 inch 2022 M2 Wifi 128GB I",
+      "ratingStar": 5,
+      "imageName": "https://t.ly/asAJe",
+      "manufacturerName": "APPLE",
+      "categoryName": "Tablet"
+    },
+    {
+      "id": 7,
+      "name": "Xiaomi Pad 6 8GB 128GB",
+      "price": "11.990.000",
+      "info": "Xiaomi Pad 6 8GB 128GB",
+      "detail": "Xiaomi Pad 6 8GB 128GB",
+      "ratingStar": 5,
+      "imageName": "https://t.ly/-0n4w",
+      "manufacturerName": "XIAOMI",
+      "categoryName": "Tablet"
+    },
+    {
+      "id": 8,
+      "name": "Xiaomi Redmi Pad SE 6GB 128GB",
+      "price": "4.990.000",
+      "info": "Xiaomi Redmi Pad SE 6GB 128GB",
+      "detail": "Xiaomi Redmi Pad SE 6GB 128GB",
+      "ratingStar": 5,
+      "imageName": "https://t.ly/zNIQy",
+      "manufacturerName": "XIAOMI",
+      "categoryName": "Tablet"
+    },
+    {
+      "id": 9,
+      "name": "iPhone 15 Pro Max 256GB",
+      "price": "29.290.000",
+      "info": "iPhone 15 Pro Max 256G",
+      "detail": "iPhone 15 Pro Max 256GB",
+      "ratingStar": 5,
+      "imageName": "https://tinyurl.com/ycxtnefs",
+      "manufacturerName": "APPLE",
+      "categoryName": "Mobile"
+    },
+    {
+      "id": 10,
+      "name": "Xiaomi Redmi Note 13 6GB 128GB",
+      "price": "4.690.000",
+      "info": "Xiaomi Redmi Note 13 6GB 128GB",
+      "detail": "Xiaomi Redmi Note 13 6GB 128GB",
+      "ratingStar": 5,
+      "imageName": "https://tinyurl.com/bdz34yef",
+      "manufacturerName": "XIAOMI",
+      "categoryName": "Mobile"
+    },
+    {
+      "id": 11,
+      "name": "OPPO Reno11 F 5G 8GB 256GB",
+      "price": "8.390.000",
+      "info": "OPPO Reno11 F 5G 8GB 256GB",
+      "detail": "OPPO Reno11 F 5G 8GB 256GB",
+      "ratingStar": 5,
+      "imageName": "https://tinyurl.com/295jmt5m",
+      "manufacturerName": "OPPO",
+      "categoryName": "Mobile"
+    },
+    {
+      "id": 12,
+      "name": "Realme 11 8GB 128GB",
+      "price": "5.190.000",
+      "info": "Realme 11 8GB 128GB",
+      "detail": "Realme 11 8GB 128GB",
+      "ratingStar": "3",
+      "imageName": "https://t.ly/Rr90z",
+      "manufacturerName": "OPPO",
+      "categoryName": "Mobile"
+    },
+    {
+      "name": "Vivo Y03 4GB 64GB",
+      "price": "3.469.000",
+      "info": "vivo Y03 4GB 64GB",
+      "detail": "vivo Y03 4GB 64GB",
+      "ratingStar": "4",
+      "imageName": "http://t.ly/86lm5",
+      "manufacturerName": "OPPO",
+      "categoryName": "Mobile",
+      "id": 13
+    },
+    {
+      "name": "Samsung Galaxy Z Flip5 256GB",
+      "price": "18.990.000",
+      "info": "Samsung Galaxy Z Flip5 256GB",
+      "detail": "Samsung Galaxy Z Flip5 256GB",
+      "ratingStar": "5",
+      "imageName": "http://t.ly/zTLRO",
+      "manufacturerName": "SAMSUNG",
+      "categoryName": "Mobile",
+      "id": 16
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Laptop"
+    },
+    {
+      "id": 2,
+      "name": "Mobile"
+    },
+    {
+      "id": 3,
+      "name": "Tablet"
+    },
+    {
+      "name": "Tai nghe",
+      "id": 4
+    }
+  ],
+  "manufacturers": [
+    {
+      "id": 1,
+      "name": "SAMSUNG",
+      "logo": "http://t.ly/PC3R1"
+    },
+    {
+      "id": 2,
+      "name": "APPLE",
+      "logo": "http://t.ly/1Tdnv"
+    },
+    {
+      "name": "XIAOMI",
+      "logo": "https://t.ly/nNYzb",
+      "id": 3
+    },
+    {
+      "name": "OPPO",
+      "logo": "https://t.ly/B-R-O",
+      "id": 4
+    },
+    {
+      "name": "INFINIX",
+      "logo": "https://t.ly/E0hlE",
+      "id": 6
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import AccountAdmin from './AccountAdmin';
 import ManufacturerAdmin from './ManufacturerAdmin';
 import CategoryAdmin from './CategoryAdmin';
 import ProductsAdmin from './ProductsAdmin';
-import FormCreateProduct from './FormCreateProduct';
+import FormCreate from './FormCreate';
 import withLoading from '~/utils/helpers/withLoading';
 
 const cx = classNames.bind(styles);
@@ -22,7 +22,7 @@ function Content() {
                 <Route path="manufacturer" element={<ManufacturerAdmin />} />
                 <Route path="category" element={<CategoryAdmin />} />
                 <Route path="product" element={<ProductsAdmin />} />
-                <Route path="create" element={<FormCreateProduct />} />
+                <Route path="create/*" element={<FormCreate />} />
             </Routes>
         </div>
     );

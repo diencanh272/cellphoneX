@@ -7,10 +7,18 @@ import CartItem from '~/components/layouts/CartItem';
 import FormAddress from '~/components/layouts/FormAddress';
 import FormInfoCustomer from '~/components/layouts/FormInfoCustomer';
 import AllPayment from '~/utils/helpers/AllPayment';
+import FormAddressContext, { FormAddressProvider } from '~/utils/contexts/context';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function InfoPayment() {
+    const { formData } = useContext(FormAddressContext);
+    // console.log(formData);
+
+    const navigate = useNavigate();
+
     let dataCart = [];
     if (localStorage && localStorage.getItem('ProductCart')) {
         dataCart = JSON.parse(localStorage.getItem('ProductCart'));
@@ -19,6 +27,10 @@ function InfoPayment() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        localStorage.setItem('FormAddress', JSON.stringify(formData));
+        setTimeout(() => {
+            navigate('/cart/accurate-payment');
+        }, 1000);
     };
 
     return (
@@ -46,7 +58,7 @@ function InfoPayment() {
                             </span>
                         </div>
                         <div className={cx('action')}>
-                            <Button to={'/cart/accurate-payment'} className={cx('action-buy')} primary type="submit">
+                            <Button className={cx('action-buy')} primary type="submit">
                                 Tiếp tục
                             </Button>
                         </div>
@@ -57,4 +69,10 @@ function InfoPayment() {
     );
 }
 
-export default InfoPayment;
+const GetDataFormAddress = () => (
+    <FormAddressProvider>
+        <InfoPayment />
+    </FormAddressProvider>
+);
+
+export default GetDataFormAddress;

@@ -1,62 +1,71 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './FormUpdateProduct.module.scss';
 import Button from '~/components/common/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionFetchListCategoryApi } from '~/actions/CategoryAction';
 import { actionFetchListManufacturerApi } from '~/actions/ManufacturerAction';
-import { actionFetchListProductApi, actionUpdateProductApi } from '~/actions/ProductAction';
+import { actionUpdateProductApi } from '~/actions/ProductAction';
+import { Modal } from 'antd';
 
 const cx = classNames.bind(styles);
 
 function FormUpdateProduct({ productUpdate }) {
-    const productInput = productUpdate.productUpdate;
+    const [id, setId] = useState('');
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [info, setInfo] = useState('');
+    const [detail, setDetail] = useState('');
+    const [ratingStar, setRatingStar] = useState('');
+    const [imageName, setImageName] = useState('');
+    const [manufacturerName, setManufacturerName] = useState('');
+    const [categoryName, setCategoryName] = useState('');
+
     const dispatch = useDispatch();
     const categories = useSelector((state) => state.categories);
     const manufacturers = useSelector((state) => state.manufacturers);
 
     useEffect(() => {
+        if (productUpdate) {
+            const { id, name, price, info, detail, ratingStar, imageName, manufacturerName, categoryName } =
+                productUpdate;
+            setId(id);
+            setName(name);
+            setPrice(price);
+            setInfo(info);
+            setDetail(detail);
+            setRatingStar(ratingStar);
+            setImageName(imageName);
+            setManufacturerName(manufacturerName);
+            setCategoryName(categoryName);
+        }
+    }, [productUpdate]);
+
+    useEffect(() => {
         dispatch(actionFetchListCategoryApi());
         dispatch(actionFetchListManufacturerApi());
-    }, [dispatch]);
+    }, [dispatch, productUpdate]);
 
-    // const [productId, setProductId] = useState('');
-    const [name, setName] = useState(productInput.name);
-    const [price, setPrice] = useState(productInput.price);
-    const [info, setInfo] = useState(productInput.info);
-    const [detail, setDetail] = useState(productInput.detail);
-    const [ratingStar, setRatingStar] = useState(productInput.ratingStar);
-    const [imageName, setImageName] = useState(productInput.imageName);
-    const [manufacturerId, setManufacturerId] = useState('');
-    const [categoryId, setCategoryId] = useState('');
+    const success = (updatedProduct) => {
+        Modal.confirm({
+            content: (
+                <span>
+                    Bạn có muốn sửa sản phẩm <strong style={{ textTransform: 'capitalize' }}>{name}</strong> không?
+                </span>
+            ),
 
-    //Handle input file
-    // const handlePathImage = (e) => {
-    //     const file = e.target.files[0].name;
-    //     setImageName(file);
-    // };
-
-    // console.log(productInput);
+            onOk() {
+                dispatch(actionUpdateProductApi(productUpdate.id, updatedProduct));
+                handleReset();
+            },
+            onCancel() {},
+        });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const updatedProduct = {
-            // id: 1,
-            name,
-            price,
-            info,
-            detail,
-            ratingStar,
-            imageName,
-            manufacturerId,
-            categoryId,
-        };
-
-        dispatch(actionUpdateProductApi(productInput.id, updatedProduct));
-        dispatch(actionFetchListProductApi());
-        // console.log(updatedProduct);
+        const updatedProduct = { name, price, info, detail, ratingStar, imageName, manufacturerName, categoryName };
+        success(updatedProduct);
     };
 
     const handleReset = () => {
@@ -66,20 +75,24 @@ function FormUpdateProduct({ productUpdate }) {
         setDetail('');
         setRatingStar('');
         setImageName('');
-        setManufacturerId('--Choose Manufacturer--');
-        setCategoryId('--Choose Category--');
+        setManufacturerName('--Choose Manufacturer--');
+        setCategoryName('--Choose Category--');
     };
 
     const category = categories.map((cate, index) => (
-        <option key={index} value={cate.id}>
+        <option key={index} value={cate.name}>
             {cate.name}
         </option>
     ));
     const manufacturer = manufacturers.map((manu, index) => (
-        <option key={index} value={manu.id}>
+        <option key={index} value={manu.name}>
             {manu.name}
         </option>
     ));
+
+    if (!productUpdate) {
+        return <div>Loading...</div>; // Hoặc xử lý tùy thuộc vào trường hợp của bạn
+    }
 
     return (
         <div className={cx('wrap')}>
@@ -90,7 +103,7 @@ function FormUpdateProduct({ productUpdate }) {
                 <div className={cx('form-input')}>
                     <div className={cx('field')}>
                         <label>ID</label>
-                        <input type="text" placeholder="ID input" disabled value={productInput.id} />
+                        <input style={{ cursor: 'no-drop' }} type="text" placeholder="ID input" disabled value={id} />
                     </div>
                     <div className={cx('field')}>
                         <label>Name</label>
@@ -151,6 +164,7 @@ function FormUpdateProduct({ productUpdate }) {
                         <label>Image</label>
                         <input
                             type="text"
+                            value={imageName}
                             onChange={(e) => {
                                 setImageName(e.target.value);
                             }}
@@ -159,22 +173,24 @@ function FormUpdateProduct({ productUpdate }) {
                     <div className={cx('field')}>
                         <label>Manufacturer</label>
                         <select
+                            value={manufacturerName}
                             onChange={(e) => {
-                                setManufacturerId(e.target.value);
+                                setManufacturerName(e.target.value);
                             }}
                         >
-                            <option>{manufacturerId}</option>
+                            <option>{manufacturerName}</option>
                             {manufacturer}
                         </select>
                     </div>
                     <div className={cx('field')}>
                         <label>Category</label>
                         <select
+                            value={categoryName}
                             onChange={(e) => {
-                                setCategoryId(e.target.value);
+                                setCategoryName(e.target.value);
                             }}
                         >
-                            <option>{categoryId}</option>
+                            <option>{categoryName}</option>
                             {category}
                         </select>
                     </div>

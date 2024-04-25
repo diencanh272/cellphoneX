@@ -10,11 +10,6 @@ import { actionFetchListAccountApi } from '~/actions/AccountAction';
 const cx = classNames.bind(styles);
 
 function FormLogin() {
-    // lấy dữ liệu form đăng nhập
-    // so sánh với acc BE
-    // nếu có lưu acc từ BE vào local với key "Account"
-    // nếu không hiển thị tài khoản không tồn tại
-
     const [accountName, setAccountName] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(true);
@@ -43,8 +38,8 @@ function FormLogin() {
 
         if (checkAccount) {
             localStorage.setItem('Account', JSON.stringify(checkAccount));
-            console.log(checkAccount);
-            console.log('login success');
+            // console.log(checkAccount);
+            // console.log('login success');
             timeNavigate();
         } else if (checkAccount === undefined) {
             console.log('Account not exist');

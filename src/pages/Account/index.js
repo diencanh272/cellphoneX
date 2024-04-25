@@ -3,12 +3,12 @@ import classNames from 'classnames/bind';
 import styles from './Account.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/common/Button';
-import icons from '~/assets/icon';
 import FormLogin from '~/components/layouts/FormLogin';
 import FormSignup from '~/components/layouts/FormSignup';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 const cx = classNames.bind(styles);
 
 function Account() {
@@ -18,25 +18,47 @@ function Account() {
     };
 
     const FormLoginOrSignup = () =>
-        setForm('/account/login') ? (
-            <FormLogin />
-        ) : setForm('/account/signup') ? (
-            <FormSignup />
-        ) : setForm('/account') ? (
-            <AccountProfile />
-        ) : (
-            <strong>Page Not Found</strong>
-        );
+        setForm('/account/login') ? <FormLogin /> : setForm('/account/signup') ? <FormSignup /> : '';
 
     const AccountProfile = () => {
         if (localStorage && localStorage.getItem('Account')) {
             let accountProfile = JSON.parse(localStorage.getItem('Account'));
 
-            return <div>{accountProfile.username}</div>;
-        } else {
-            return <FormLogin />;
+            return (
+                <div>
+                    <h2>Chào mừng {`${accountProfile.username}`} đến với Cellphones</h2>
+                    {accountProfile.username}
+                </div>
+            );
         }
     };
+
+    //! Render title login signup start
+    const TitleLoginOrSignup = () =>
+        setForm('/account/login') ? (
+            <h2>Đăng nhập tài khoản Cellphones</h2>
+        ) : setForm('/account/signup') ? (
+            <h2>Đăng kí tài khoản Cellphones</h2>
+        ) : (
+            ''
+        );
+
+    //! Render title login signup end
+
+    //! TopLogin SignUp start
+    const TopLoginSignup = () => (
+        <>
+            <div className={cx('top')}>
+                <div className={cx('thumb')}>
+                    <img src={images.chibi} alt="" />
+                </div>
+                <div className={cx('title')}>
+                    <TitleLoginOrSignup />
+                </div>
+            </div>
+        </>
+    );
+    //! TopLogin SignUp end
 
     const ButtonNav = () =>
         setForm('/account/signup') ? (
@@ -52,30 +74,11 @@ function Account() {
                     <div className={cx('nav')}>
                         <ButtonNav />
                     </div>
+                    <TopLoginSignup />
 
-                    <div className={cx('top')}>
-                        <div className={cx('thumb')}>
-                            <img src={images.chibi} alt="" />
-                        </div>
-                        <div className={cx('title')}>
-                            <h2>Đăng nhập tài khoản Cellphones</h2>
-                        </div>
-                    </div>
-                    <div className={cx('choose-login')}>
-                        <div className={cx('login-btn')}>
-                            <Button leftIcon={<img src={icons.google} alt="" />}>Google</Button>
-                        </div>
-                        <div className={cx('login-btn')}>
-                            <Button leftIcon={<img src={icons.zalo} alt="" />}>Zalo</Button>
-                        </div>
-                    </div>
-                    <div className={cx('line-through')}>
-                        <hr />
-                        <p>hoặc</p>
-                        <hr />
-                    </div>
                     <div className={cx('form-wrap')}>
                         <FormLoginOrSignup />
+                        {setForm('/account') && <AccountProfile />}
                     </div>
                 </div>
             </div>
