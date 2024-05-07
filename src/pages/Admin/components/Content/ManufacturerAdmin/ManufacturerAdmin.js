@@ -82,12 +82,16 @@ function ManufacturerAdmin() {
                 </thead>
                 <tbody className={cx('table-main')}>{manu}</tbody>
                 <tfoot className={cx('table-footer')}>
-                    <Pagination
-                        currentPage={currentPage}
-                        productPerPage={productPerPage}
-                        paginate={paginate}
-                        totalProduct={manufacturers.length}
-                    />
+                    <tr className={cx('wrap')}>
+                        <td>
+                            <Pagination
+                                currentPage={currentPage}
+                                productPerPage={productPerPage}
+                                paginate={paginate}
+                                totalProduct={manufacturers.length}
+                            />
+                        </td>
+                    </tr>
                 </tfoot>
             </table>
 

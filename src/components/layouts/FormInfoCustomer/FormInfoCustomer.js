@@ -5,14 +5,10 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function FormInfoCustomer() {
-    let dataAccount = {};
-    if (localStorage && localStorage.getItem('Account')) {
-        dataAccount = JSON.parse(localStorage.getItem('Account'));
-    }
-    const [fullName, setFullName] = useState(dataAccount.fullname);
-    const [phone, setPhone] = useState(dataAccount.mobile);
-    const [email, setEmail] = useState(dataAccount.fullname);
+function FormInfoCustomer({ account }) {
+    const [fullName, setFullName] = useState(account.fullname);
+    const [phone, setPhone] = useState(account.mobile);
+    const [email, setEmail] = useState(account.fullname);
 
     // console.log(dataAccount);
 

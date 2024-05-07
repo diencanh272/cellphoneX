@@ -1,26 +1,29 @@
 import classNames from 'classnames/bind';
 
 import styles from './QttProductsCart.module.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { actionFetchListAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
 function QttProductsCart() {
-    let dataCart = {
-        qtt: 0,
-        listCart: [],
-    };
-
-    dataCart = useSelector((state) => state.cart);
-
-    // console.log(dataCart);
-    // if (localStorage && localStorage.getItem('ProductCart')) {
-    //     dataCart = JSON.parse(localStorage.getItem('ProductCart'));
-    // }
     let totalQtt = 0;
-    dataCart.listCartWrap.listCart.map((product) => {
-        return (totalQtt = totalQtt + product.quantity);
-    });
+    const accounts = useSelector((state) => state.accounts);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(actionFetchListAccountApi());
+    }, [dispatch]);
+    let accountLoginId;
+    if (localStorage && localStorage.getItem('AccountId')) {
+        accountLoginId = JSON.parse(localStorage.getItem('AccountId'));
+    }
+
+    let getAccountLogin = accounts.find((acc) => acc.id === accountLoginId);
+    // console.log(getCartAccountLogin);
+    if (getAccountLogin && getAccountLogin.carts) {
+        getAccountLogin.carts.map((item) => (totalQtt += item.quantity));
+    }
 
     return <span className={cx('qtt-product')}>{totalQtt}</span>;
 }

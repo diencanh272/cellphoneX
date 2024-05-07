@@ -1,15 +1,25 @@
-function ShortNameUser() {
-    let getAccount = { fullname: '' };
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionFetchListAccountApi } from '~/actions/AccountAction';
 
-    if (localStorage && localStorage.getItem('Account')) {
-        getAccount = JSON.parse(localStorage.getItem('Account'));
+function ShortNameUser() {
+    const dispatch = useDispatch();
+    const accounts = useSelector((state) => state.accounts);
+    useEffect(() => {
+        dispatch(actionFetchListAccountApi());
+    }, [dispatch]);
+    let getAccount = { fullname: '' };
+    let getAccountId;
+
+    if (localStorage && localStorage.getItem('AccountId')) {
+        getAccountId = JSON.parse(localStorage.getItem('AccountId'));
     }
-    // console.log(getAccount);
+    getAccount = accounts.find((acc) => acc.id === getAccountId);
 
     const splittedStr = [];
 
     let text = '';
-    if (getAccount !== -1) {
+    if (getAccount && getAccount.fullname) {
         text = getAccount.fullname;
     }
 

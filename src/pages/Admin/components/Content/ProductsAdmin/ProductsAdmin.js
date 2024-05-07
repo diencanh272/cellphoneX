@@ -11,6 +11,7 @@ import Modal from 'antd/es/modal/Modal';
 import PopupConfirm from '~/components/common/Modal/PopupConfirm';
 import FormUpdateProduct from '../FormUpdateProduct';
 import Pagination from '~/components/common/Pagination';
+import SearchAdmin from '~/components/layouts/SearchAdmin';
 
 const cx = classNames.bind(styles);
 
@@ -20,8 +21,11 @@ function ProductsAdmin() {
     const [productName, setProductName] = useState('');
     const [productId, setProductId] = useState('');
     const [productUpdate, setProductUpdate] = useState({});
+    const [searchedProducts, setSearchedProducts] = useState([]);
+    const [mapping, setMapping] = useState(false);
 
     const dispatch = useDispatch();
+
     const products = useSelector((state) => state.products);
     useEffect(() => {
         dispatch(actionFetchListProductApi());
@@ -29,7 +33,7 @@ function ProductsAdmin() {
 
     //Pagination start
     const [currentPage, setCurrentPage] = useState(1);
-    const [productPerPage] = useState(5);
+    const [productPerPage] = useState(10);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     const indexOfLastProductPerPage = currentPage * productPerPage;
     const indexOfFirstProductPerPage = indexOfLastProductPerPage - productPerPage;
@@ -59,43 +63,114 @@ function ProductsAdmin() {
         setProductUpdate(productUpdate);
     };
 
-    const renderProductAdmin = currentProductsOnPage.map((product, index) => {
-        return (
-            <tr className={cx('row')} key={index}>
-                <td className={cx('col-1')}>{product.id}</td>
-                <td className={cx('col-1', 'td-thumb')}>
-                    <img className={cx('thumb')} src={product.imageName} alt={product.imageName} />
-                </td>
-                <td className={cx('col-3')}>{product.name}</td>
-                <td className={cx('col-2')}>{product.categoryName}</td>
-                <td className={cx('col-2')}>{product.manufacturerName}</td>
-                <td className={cx('col-2')}>{`${product.price}₫`}</td>
-                <td className={cx('col-1', 'btn')}>
-                    <Button
-                        leftIcon={
-                            <FontAwesomeIcon
-                                icon={faPenToSquare}
+    const handleSearch = (searchResult) => {
+        setSearchedProducts(searchResult);
+    };
+
+    const handleMapping = (result) => {
+        setMapping(result);
+    };
+
+    const renderPagination =
+        searchedProducts.length > 0 && searchedProducts.length !== products.length ? (
+            ''
+        ) : (
+            <tfoot className={cx('table-footer')}>
+                <tr className={cx('wrap')}>
+                    <td>
+                        <Pagination
+                            currentPage={currentPage}
+                            productPerPage={productPerPage}
+                            paginate={paginate}
+                            totalProduct={products.length}
+                        />
+                    </td>
+                </tr>
+            </tfoot>
+        );
+
+    const renderProductAdmin =
+        searchedProducts.length > 0 && searchedProducts.length !== products.length ? (
+            searchedProducts.map((product, index) => {
+                return (
+                    <tr className={cx('row')} key={index}>
+                        <td className={cx('col-1')}>{product.id}</td>
+                        <td className={cx('col-1', 'td-thumb')}>
+                            <img className={cx('thumb')} src={product.imageName} alt={product.imageName} />
+                        </td>
+                        <td className={cx('col-3')}>{product.name}</td>
+                        <td className={cx('col-2')}>{product.categoryName}</td>
+                        <td className={cx('col-2')}>{product.manufacturerName}</td>
+                        <td className={cx('col-2')}>{`${product.price}₫`}</td>
+                        <td className={cx('col-1', 'btn')}>
+                            <Button
+                                leftIcon={
+                                    <FontAwesomeIcon
+                                        icon={faPenToSquare}
+                                        onClick={() => {
+                                            handleEdit(product.id);
+                                        }}
+                                    />
+                                }
+                            />
+                            <Button
+                                leftIcon={<FontAwesomeIcon icon={faTrash} />}
                                 onClick={() => {
-                                    handleEdit(product.id);
+                                    handleDelete(product.id, product.name);
                                 }}
                             />
-                        }
-                    />
-                    <Button
-                        leftIcon={<FontAwesomeIcon icon={faTrash} />}
-                        onClick={() => {
-                            handleDelete(product.id, product.name);
-                        }}
-                    />
-                    <Button leftIcon={<FontAwesomeIcon icon={faEye} />} />
-                </td>
-            </tr>
+                            <Button leftIcon={<FontAwesomeIcon icon={faEye} />} />
+                        </td>
+                    </tr>
+                );
+            })
+        ) : mapping ? (
+            <p>Không có sản phẩm nào!</p>
+        ) : (
+            currentProductsOnPage.map((product, index) => {
+                return (
+                    <tr className={cx('row')} key={index}>
+                        <td className={cx('col-1')}>{product.id}</td>
+                        <td className={cx('col-1', 'td-thumb')}>
+                            <img className={cx('thumb')} src={product.imageName} alt={product.imageName} />
+                        </td>
+                        <td className={cx('col-3')}>{product.name}</td>
+                        <td className={cx('col-2')}>{product.categoryName}</td>
+                        <td className={cx('col-2')}>{product.manufacturerName}</td>
+                        <td className={cx('col-2')}>{`${product.price}₫`}</td>
+                        <td className={cx('col-1', 'btn')}>
+                            <Button
+                                leftIcon={
+                                    <FontAwesomeIcon
+                                        icon={faPenToSquare}
+                                        onClick={() => {
+                                            handleEdit(product.id);
+                                        }}
+                                    />
+                                }
+                            />
+                            <Button
+                                leftIcon={<FontAwesomeIcon icon={faTrash} />}
+                                onClick={() => {
+                                    handleDelete(product.id, product.name);
+                                }}
+                            />
+                            <Button leftIcon={<FontAwesomeIcon icon={faEye} />} />
+                        </td>
+                    </tr>
+                );
+            })
         );
-    });
 
     return (
         <>
             <div className={cx('main')}>
+                <div className={cx('row', 'search-product')}>
+                    <div className={cx('col-5', 'offset-4')}>
+                        <SearchAdmin products={products} onSearch={handleSearch} onMapping={handleMapping} />
+                    </div>
+                </div>
+
                 <table className={cx('table')}>
                     <thead className={cx('table-header')}>
                         <tr className={cx('row')}>
@@ -109,14 +184,7 @@ function ProductsAdmin() {
                         </tr>
                     </thead>
                     <tbody className={cx('table-main')}>{renderProductAdmin}</tbody>
-                    <tfoot className={cx('table-footer')}>
-                        <Pagination
-                            currentPage={currentPage}
-                            productPerPage={productPerPage}
-                            paginate={paginate}
-                            totalProduct={products.length}
-                        />
-                    </tfoot>
+                    {renderPagination}
                 </table>
             </div>
 

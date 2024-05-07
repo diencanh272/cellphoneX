@@ -1,19 +1,19 @@
-// Redux reducer
 import * as TYPES from '~/utils/constants/Constants';
 
-const initialState = {};
+const initialState = {
+    orders: [],
+};
 
-export const getOrderReducer = (state = initialState, action) => {
+export const orderReducer = (state = initialState, action) => {
     switch (action.type) {
-        case TYPES.ORDER:
-            let newState = {};
-            localStorage.setItem('Order', JSON.stringify(action.payload));
-            if (localStorage && localStorage.getItem('Order')) {
-                newState = JSON.parse(localStorage.getItem('Order'));
-            }
-            state = { ...state, newState };
-            return state;
-
+        case TYPES.CREATE_NEW_ORDER:
+            const newOrder = {
+                order: action.payload,
+            };
+            return {
+                ...state,
+                orders: [...state.orders, newOrder],
+            };
         default:
             return state;
     }

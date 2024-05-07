@@ -3,16 +3,16 @@ import { getAllProductReducer } from './ProductReducer';
 import { getAllCategoryReducer } from './CategoryReducer';
 import { getAllManufacturerReducer } from './ManufacturerReducer';
 import { getAllAccountReducer } from './AccountReducer';
-import { getCartReducer } from './CartReducer';
-import { getOrderReducer } from './OrderReducer';
+import { cartReducer } from './CartReducer';
+import { orderReducer } from './OrderReducer';
 
 const rootReducer = combineReducers({
     products: getAllProductReducer,
     categories: getAllCategoryReducer,
     manufacturers: getAllManufacturerReducer,
     accounts: getAllAccountReducer,
-    cart: getCartReducer,
-    order: getOrderReducer,
+    carts: cartReducer,
+    order: orderReducer,
 });
 
 export default rootReducer;

@@ -8,6 +8,7 @@ import Account from '~/pages/Account';
 import Cart from '~/pages/Cart';
 import DetailWithLoading from '~/pages/Detail';
 import Order from '~/pages/Order';
+import Category from '~/pages/Category';
 
 //*Public Route
 const publicRoute = [
@@ -18,7 +19,7 @@ const publicRoute = [
     { path: '/cart/*', component: Payment, layout: HeaderOnly },
     { path: '/cart', component: Cart, layout: HeaderOnly },
     { path: '/order', component: Order, layout: HeaderOnly },
-    { path: '/category/*', component: Order, layout: HeaderOnly },
+    { path: '/category/:slug', component: Category },
 ];
 
 //*Private Route (redirect Login Page)

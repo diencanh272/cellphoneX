@@ -13,7 +13,7 @@ function FormAddress() {
 
     const [selectedProvince, setSelectedProvince] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
-    const [setSelectedWard] = useState('');
+    const [selectedWard, setSelectedWard] = useState('');
     const [apartment, setApartment] = useState('');
     const [note, setNote] = useState('');
     // Lấy danh sách các tỉnh/thành phố từ dữ liệu level1s

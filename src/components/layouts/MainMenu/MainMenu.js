@@ -48,17 +48,17 @@ function MainMenu() {
             onMouseLeave={handleCategoryMouseLeave}
         >
             <Button
-                to={`/${cate.name}`}
+                to={`/category/${cate.name}`}
                 className={cx('category-link')}
                 rightIcon={<FontAwesomeIcon icon={faChevronRight} />}
             >
                 {cate.name}
 
-                {hoveredCategory === index && (
+                {/* {hoveredCategory === index && (
                     <ul className={cx('manu-list')}>
                         <ManufacturerMenu cateName={cate.name} />
                     </ul>
-                )}
+                )} */}
             </Button>
         </li>
     ));

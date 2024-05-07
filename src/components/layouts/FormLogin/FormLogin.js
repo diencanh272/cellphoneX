@@ -37,9 +37,11 @@ function FormLogin() {
         const checkAccount = accounts.find((acc) => acc.email === accountName || acc.mobile === accountName);
 
         if (checkAccount) {
-            localStorage.setItem('Account', JSON.stringify(checkAccount));
-            // console.log(checkAccount);
-            // console.log('login success');
+            // document.cookie = `account=${JSON.stringify(checkAccount)}; path=/`;
+
+            localStorage.setItem('AccountId', JSON.stringify(checkAccount.id));
+            console.log(checkAccount);
+            console.log('Login success');
             timeNavigate();
         } else if (checkAccount === undefined) {
             console.log('Account not exist');

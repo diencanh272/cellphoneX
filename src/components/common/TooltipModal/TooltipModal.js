@@ -6,20 +6,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faBell, faGears, faTruckFast, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import ShortNameUser from '~/utils/helpers/shortNameUser';
 import { useNavigate } from 'react-router-dom';
+import { actionFetchListAccountApi } from '~/actions/AccountAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function TooltipModal() {
     const [account, setAccount] = useState(null);
     const navigate = useNavigate();
+    const accounts = useSelector((state) => state.accounts);
+    const dispatch = useDispatch();
+
+    let accountLoginId;
+    if (localStorage && localStorage.getItem('AccountId')) {
+        accountLoginId = JSON.parse(localStorage.getItem('AccountId'));
+    }
 
     useEffect(() => {
-        const storedAccount = JSON.parse(localStorage.getItem('Account'));
-        setAccount(storedAccount);
-    }, []);
+        const getAccountLogin = accounts.find((acc) => acc.id === accountLoginId);
+        setAccount(getAccountLogin);
+    }, [accounts, accountLoginId]);
+
+    useEffect(() => {
+        dispatch(actionFetchListAccountApi());
+    }, [dispatch]);
 
     const handleLogOut = () => {
-        if (localStorage && localStorage.getItem('Account')) {
+        if (localStorage && localStorage.getItem('AccountId')) {
             localStorage.clear();
             setAccount(null);
         }

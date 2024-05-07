@@ -19,6 +19,8 @@ export const DELETE_MANUFACTURER = 'DELETE_MANUFACTURER';
 //Account
 export const FETCH_ACCOUNT_LIST = 'FETCH_ACCOUNT_LIST';
 export const CREATE_ACCOUNT = 'CREATE_ACCOUNT';
+export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
 
 // Check user login & signup
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -29,10 +31,12 @@ export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
-//Cart
+//Action types
+
+export const FETCH_CART_LIST = 'FETCH_CART_LIST';
 export const ADD_TO_CART = 'ADD_TO_CART';
-export const DELETE_PRODUCT_CART = 'DELETE_PRODUCT_CART';
-export const UPDATE_QUANTITY_PRODUCT = 'UPDATE_QUANTITY_PRODUCT';
+export const UPDATE_CART_ITEM_QUANTITY = 'UPDATE_CART_ITEM_QUANTITY';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 //Order
-export const ORDER = 'ORDER';
+export const CREATE_NEW_ORDER = 'CREATE_NEW_ORDER';

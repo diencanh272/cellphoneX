@@ -3,9 +3,9 @@ import classNames from 'classnames/bind';
 import styles from './ContentCreate.module.scss';
 import { Route, Routes } from 'react-router-dom';
 import FormCreateProduct from './FormCreateProduct';
-import FormSignup from '~/components/layouts/FormSignup';
 import FormCreateCategory from './FormCreateCategory';
 import FormCreateManu from './FormCreateManu';
+import FormCreateAccount from './FormCreateAccount';
 
 const cx = classNames.bind(styles);
 
@@ -23,7 +23,7 @@ function ContentCreate() {
                 <Route path="product" element={<FormCreateProduct />} />
                 <Route
                     path="account"
-                    element={<FormCreateNew title={'Create New Account'} component={<FormSignup />} />}
+                    element={<FormCreateNew title={'Create New Account'} component={<FormCreateAccount />} />}
                 />
                 <Route
                     path="category"

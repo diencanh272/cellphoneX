@@ -4,6 +4,8 @@ const urlProduct = '/products';
 const urlAccount = '/accounts';
 const urlCategories = '/categories';
 const urlManufacturers = '/manufacturers';
+const urlCart = '/carts';
+const urlOrder = '/orders';
 
 // API product
 const getProducts = () => {
@@ -31,7 +33,7 @@ const getAccounts = () => {
     return api.get(urlAccount);
 };
 const createNewAccount = (body) => {
-    return api.post(urlAccount, body);
+    return api.post(urlAccount, { ...body, status: 'NOT_ACTIVE' });
 };
 const deleteAccount = (id) => {
     return api.delete(`${urlAccount}/${id}`);
@@ -68,6 +70,37 @@ const updateManufacturers = (id, body) => {
     return api.put(`${urlManufacturers}/${id}`, body);
 };
 
+//API Carts
+
+const getAllCarts = () => {
+    return api.get(urlCart);
+};
+
+const getCartByAccountId = (accountId) => {
+    return api.get(`${urlCart}?accountId=${accountId}`);
+    // Hoặc: return api.get(`${urlCart}/${accountId}`);
+};
+
+const addToCart = (accountId, productId, quantity) => {
+    return api.post(urlCart, {
+        accountId,
+        items: [{ productId, quantity }],
+    });
+};
+
+const updateCartItem = (accountId, itemId, updatedItem) => {
+    return api.put(`${urlCart}/${accountId}/${itemId}`, updatedItem);
+};
+
+const removeCartItem = (accountId, itemId) => {
+    return api.delete(`${urlCart}/${accountId}/${itemId}`);
+};
+
+//Orders
+const createNewOrder = (body) => {
+    return api.post(urlOrder, body);
+};
+
 export {
     //product
     getProducts,
@@ -90,4 +123,13 @@ export {
     createNewAccount,
     deleteAccount,
     updateAccount,
+    // Cart
+    getAllCarts,
+    getCartByAccountId,
+    addToCart,
+    updateCartItem,
+    removeCartItem,
+
+    //Order
+    createNewOrder,
 };

@@ -4,32 +4,31 @@ import styles from './Detail.module.scss';
 import Button from '~/components/common/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionFetchListProductApi } from '~/actions/ProductAction';
-import { actionAddToCart } from '~/actions/CartAction';
 import { Modal } from 'antd';
 import ShowStarRating from '~/utils/helpers/ShowStarRating/ShowStarRating';
 import PopupLogin from '~/components/common/Modal/Popup/PopupLogin';
 import withLoading from '~/utils/helpers/withLoading';
+import { actionAddToCartDispatch, actionFetchListAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
 function Detail() {
     const [isLoading, setIsLoading] = useState(true);
     const { name } = useParams();
-    const navigate = useNavigate();
     const [openModalLogin, setOpenModalLogin] = useState(false);
     // console.log(name);
 
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
-    const carts = useSelector((state) => state.cart);
     // console.log(carts);
     // console.log(products);
 
     useEffect(() => {
         dispatch(actionFetchListProductApi());
+        dispatch(actionFetchListAccountApi());
     }, [dispatch]);
 
     useEffect(() => {
@@ -40,38 +39,45 @@ function Detail() {
 
     const findProductByParam = products.find((prd) => prd.name.toLowerCase() === name);
     // console.log(findProductByParam);
-    const checkProductExistCart = carts.listCartWrap.listCart.findIndex((prd) => prd.name.toLowerCase() === name);
     // console.log(checkProductExistCart);
+    // accountId, itemId, quantity
+    const accountId = JSON.parse(localStorage.getItem('AccountId'));
+    // const cartAccount = account.cart;
+    // console.log(cartAccount); //[]
 
     //!Popup Add To Cart Success Start
-    const success = () => {
+
+    const success = (accountId, cartItem) => {
         Modal.confirm({
             content: (
                 <span>
                     Bạn có muốn thêm <strong style={{ textTransform: 'capitalize' }}>{name}</strong> vào giỏ hàng không?
                 </span>
             ),
-
             onOk() {
                 setTimeout(() => {
-                    dispatch(actionAddToCart(findProductByParam));
+                    dispatch(actionAddToCartDispatch(accountId, cartItem));
                 }, 500);
             },
             onCancel() {},
         });
     };
+
     const handleAddToCart = () => {
-        if (localStorage && localStorage.getItem('Account')) {
-            success();
+        if (localStorage && localStorage.getItem('AccountId')) {
+            const cartItemId = findProductByParam.id;
+            const quantity = 1;
+            success(accountId, { cartItemId, quantity });
         } else {
             setOpenModalLogin(true);
         }
     };
+
     //!Popup Add To Cart Success End
 
     //!Kiểm tra login với mua ngay start
     const handleBuyNow = () => {
-        if (localStorage && localStorage.getItem('Account')) {
+        if (localStorage && localStorage.getItem('AccountId')) {
             Modal.confirm({
                 content: (
                     <span>
@@ -79,18 +85,7 @@ function Detail() {
                         không?
                     </span>
                 ),
-                onOk() {
-                    if (checkProductExistCart === -1) {
-                        dispatch(actionAddToCart(findProductByParam));
-                        setTimeout(() => {
-                            navigate('/cart');
-                        }, 1500);
-                    } else {
-                        setTimeout(() => {
-                            navigate('/cart');
-                        }, 1500);
-                    }
-                },
+                onOk() {},
                 onCancel() {},
             });
         } else {

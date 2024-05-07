@@ -1,5 +1,5 @@
 import * as TYPES from '~/utils/constants/Constants';
-import { createNewAccount, getAccounts } from '~/services/api/api';
+import { createNewAccount, deleteAccount, getAccounts, updateAccount } from '~/services/api/api';
 
 //******Call API  Account
 export const actionFetchListAccountApi = () => {
@@ -17,10 +17,38 @@ export const actionFetchListAccountApi = () => {
 export const actionCreateNewAccountApi = (account) => {
     return (dispatch) => {
         return createNewAccount(account)
-            .then((response, status) => {
+            .then((response) => {
                 console.log('Tạo mới tài khoản thành công!!!');
-                // console.log(response);
+                console.log(response);
                 dispatch(actionCreateNewAccountDispatch(response));
+            })
+            .catch((error) => {
+                return error;
+            });
+    };
+};
+
+export const actionDeleteAccountApi = (id) => {
+    return (dispatch) => {
+        return deleteAccount(id)
+            .then((response) => {
+                dispatch(actionDeleteAccountDispatch(response));
+                console.log('Xóa tài khoản thành công!!!');
+                // console.log(response);
+            })
+            .catch((error) => {
+                return error;
+            });
+    };
+};
+
+export const actionUpdateAccountApi = (id, updatedAccount) => {
+    return (dispatch) => {
+        return updateAccount(id, updatedAccount)
+            .then((response) => {
+                dispatch(actionUpdateAccountDispatch(response));
+                console.log('Sửa tài khoản thành công!!!');
+                console.log(response);
             })
             .catch((error) => {
                 return error;
@@ -41,5 +69,33 @@ export const actionCreateNewAccountDispatch = (accounts) => {
     return {
         type: TYPES.CREATE_ACCOUNT,
         payload: accounts,
+    };
+};
+
+export const actionDeleteAccountDispatch = (id) => {
+    return {
+        type: TYPES.DELETE_ACCOUNT,
+        payload: id,
+    };
+};
+
+export const actionUpdateAccountDispatch = (acc) => {
+    return {
+        type: TYPES.UPDATE_ACCOUNT,
+        payload: acc,
+    };
+};
+
+export const actionAddToCartDispatch = (accountId, cartItem) => {
+    return {
+        type: TYPES.ADD_TO_CART,
+        payload: { accountId, cartItem },
+    };
+};
+
+export const actionRemoveToCartDispatch = (id) => {
+    return {
+        type: TYPES.REMOVE_FROM_CART,
+        payload: id,
     };
 };

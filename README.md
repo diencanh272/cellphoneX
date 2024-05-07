@@ -125,12 +125,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 25. Add to Cart(**11**)(**SỬA**)(thêm 1 field vào account)
 
-# 27.Phân trang hôm với main menu (**15**)
+# 27.Phân trang home với main menu (**15**)(tải cố định sản phẩm từ 4\* trở lên )(**OK**)
 
-# 28.CRUD với các danh mục admin (**16**)(**DOING**)
+# 28.CRUD với các danh mục admin (**16**)(**OK**)
 
-# 29.filter và search admin (**17**)
+# 29.filter và search admin product(name,cate,manu)-account(email,username,sdt,) (**17**)(**OK**)
 
-# 30.Quản lí đơn hàng với admin (**18**)
+<!-- # 30.Quản lí đơn hàng với admin (**18**) -->
 
 # 31. Validate tất cả các Form(**19**)
+
+# 31. filter và sort (**20**)
+
+**\*Chặn truy cập vào đường dẫn admin\*\*\***OK**\*
+**\*Ẩn bớt trang khi có nhiều\*\*\*\*\*

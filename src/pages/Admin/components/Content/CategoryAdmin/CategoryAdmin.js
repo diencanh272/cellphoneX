@@ -80,12 +80,16 @@ function CategoryAdmin() {
                 </thead>
                 <tbody className={cx('table-main')}>{category}</tbody>
                 <tfoot className={cx('table-footer')}>
-                    <Pagination
-                        currentPage={currentPage}
-                        productPerPage={productPerPage}
-                        paginate={paginate}
-                        totalProduct={categories.length}
-                    />
+                    <tr className={cx('wrap')}>
+                        <td>
+                            <Pagination
+                                currentPage={currentPage}
+                                productPerPage={productPerPage}
+                                paginate={paginate}
+                                totalProduct={categories.length}
+                            />
+                        </td>
+                    </tr>
                 </tfoot>
             </table>
 

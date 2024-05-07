@@ -25,12 +25,12 @@ function HeaderMain() {
     // console.log(userCurrentSignup);
 
     useEffect(() => {
-        if (localStorage.getItem('Account')) {
+        if (localStorage.getItem('AccountId')) {
             setAccount(true);
         }
     }, []);
     const handleClickCart = () => {
-        if (localStorage && localStorage.getItem('Account')) {
+        if (localStorage && localStorage.getItem('AccountId')) {
             navigate('/cart');
         } else {
             setModalOpen(true);

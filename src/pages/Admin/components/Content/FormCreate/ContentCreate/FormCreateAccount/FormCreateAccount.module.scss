@@ -1,0 +1,30 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+        color: var(--text-color-default);
+        font-weight: 500;
+    }
+
+    .input {
+        border: 1px solid rgba(145, 158, 171, 0.239);
+        padding: 10px;
+    }
+}
+
+.form-group + .form-group {
+    margin-top: 16px;
+}
+
+.action {
+    margin-top: 16px;
+}
+
+.error {
+    color: var(--primary-color);
+}
+
+.hide {
+    display: none;
+}

@@ -183,3 +183,10 @@ input[type='checkbox']:checked {
     box-shadow: var(--box-shadow-checkbox);
     border-color: var(--white-color);
 }
+
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+}

@@ -43,6 +43,13 @@ function Search() {
     const handleOnClickLink = () => {
         setShowResult(false);
     };
+
+    const handleBlur = () => {
+        setTimeout(() => {
+            setShowResult(false);
+        }, 200);
+    };
+
     const resultFormSearch = inputMapResult.map((result, index) => {
         return (
             <li key={index} className={cx('result-item')}>
@@ -55,7 +62,7 @@ function Search() {
     //! Handle Search End
 
     const handleXmark = () => {
-        valueInput !== '' ? setValueInput('') : setShowResult(false);
+        setValueInput('');
     };
 
     return (
@@ -63,7 +70,7 @@ function Search() {
             {xmark ? (
                 <Button
                     className={cx('btn')}
-                    onMouseDown={handleXmark}
+                    onClick={handleXmark}
                     leftIcon={<FontAwesomeIcon icon={faCircleXmark} />}
                 ></Button>
             ) : (
@@ -80,6 +87,7 @@ function Search() {
                     setShowResult(true);
                     setXmark(true);
                 }}
+                onBlur={handleBlur}
             />
             {showResult && (
                 <div className={cx('result-wrap')}>
