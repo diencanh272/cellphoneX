@@ -40,3 +40,4 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 //Order
 export const CREATE_NEW_ORDER = 'CREATE_NEW_ORDER';
+export const FETCH_ORDER_LIST = 'FETCH_ORDER_LIST';

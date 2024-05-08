@@ -41,6 +41,9 @@ function CategoryAdmin() {
     const confirmDelete = () => {
         dispatch(actionDeleteCategoryApi(id));
         setModalOpenDelete(false);
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
     };
     const handleDelete = (id, name) => {
         setName(name);
@@ -102,7 +105,7 @@ function CategoryAdmin() {
                 />
             </Modal>
             <Modal centered open={modalOpenUpdate} footer={null} onCancel={() => setModalOpenUpdate(false)}>
-                <FormUpdateCategory categoryUpdate={categoryUpdate} />
+                <FormUpdateCategory categoryUpdate={categoryUpdate} setModal={() => setModalOpenUpdate(false)} />
             </Modal>
         </div>
     );

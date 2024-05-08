@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -8,7 +8,7 @@ import styles from './FormSignup.module.scss';
 import Button from '~/components/common/Button';
 import { defaultCreateDate } from '~/utils/helpers/defaultCreateDate';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionCreateNewAccountApi, actionFetchListAccountApi } from '~/actions/AccountAction';
+import { actionCreateNewAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
@@ -16,10 +16,6 @@ function FormSignup() {
     const dispatch = useDispatch();
     const accounts = useSelector((state) => state.accounts);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        dispatch(actionFetchListAccountApi());
-    }, [dispatch]);
 
     const checkEmailExist = (email) => {
         const check = accounts.find((account) => account.email === email);
@@ -98,15 +94,9 @@ function FormSignup() {
                 validationSchema={SignupSchema}
                 onSubmit={(value, { setSubmitting }) => {
                     dispatch(actionCreateNewAccountApi(value))
-                        .then((response) => {
-                            if (response.error) {
-                                console.log(response);
-                                setSubmitting(false);
-                            } else {
-                                console.log(value);
-                                localStorage.setItem('Account', JSON.stringify(value));
-                                navigate('/');
-                            }
+                        .then(() => {
+                            navigate('/');
+                            window.location.reload();
                         })
                         .catch((error) => {
                             console.log(error);

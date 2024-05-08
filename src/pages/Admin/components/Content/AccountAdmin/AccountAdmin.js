@@ -44,6 +44,9 @@ function AccountAdmin() {
             content: <span>Bạn có muốn xóa tài khoản {email} không?</span>,
             onOk() {
                 dispatch(actionDeleteAccountApi(id));
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
             },
             onCancel() {},
         });
@@ -174,7 +177,7 @@ function AccountAdmin() {
             </table>
 
             <Modal centered open={modalOpenUpdate} footer={null} onCancel={() => setModalOpenUpdate(false)}>
-                <FormUpdateAccount accountUpdate={accountUpdate} />
+                <FormUpdateAccount accountUpdate={accountUpdate} setModal={() => setModalOpenUpdate(false)} />
             </Modal>
         </div>
     );

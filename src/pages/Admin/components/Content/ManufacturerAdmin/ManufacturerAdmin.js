@@ -40,6 +40,9 @@ function ManufacturerAdmin() {
     const confirmDelete = () => {
         dispatch(actionDeleteManufacturerApi(id));
         setModalOpenDelete(false);
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
     };
     const handleDelete = (id, name) => {
         setProductName(name);
@@ -104,7 +107,7 @@ function ManufacturerAdmin() {
                 />
             </Modal>
             <Modal centered open={modalOpenUpdate} footer={null} onCancel={() => setModalOpenUpdate(false)}>
-                <FormUpdateManu manuUpdate={manuUpdate} />
+                <FormUpdateManu manuUpdate={manuUpdate} setModal={() => setModalOpenUpdate(false)} />
             </Modal>
         </div>
     );

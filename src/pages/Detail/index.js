@@ -4,7 +4,7 @@ import styles from './Detail.module.scss';
 import Button from '~/components/common/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionFetchListProductApi } from '~/actions/ProductAction';
 import { Modal } from 'antd';
@@ -19,6 +19,7 @@ function Detail() {
     const [isLoading, setIsLoading] = useState(true);
     const { name } = useParams();
     const [openModalLogin, setOpenModalLogin] = useState(false);
+    const navigate = useNavigate();
     // console.log(name);
 
     const dispatch = useDispatch();
@@ -46,7 +47,6 @@ function Detail() {
     // console.log(cartAccount); //[]
 
     //!Popup Add To Cart Success Start
-
     const success = (accountId, cartItem) => {
         Modal.confirm({
             content: (
@@ -76,18 +76,27 @@ function Detail() {
     //!Popup Add To Cart Success End
 
     //!Kiểm tra login với mua ngay start
+    const successBuyNow = (accountId, cartItem) => {
+        Modal.confirm({
+            content: (
+                <span>
+                    Bạn có muốn thêm <strong style={{ textTransform: 'capitalize' }}>{name}</strong> vào giỏ hàng không?
+                </span>
+            ),
+            onOk() {
+                setTimeout(() => {
+                    dispatch(actionAddToCartDispatch(accountId, cartItem));
+                    navigate('/cart/info-payment');
+                }, 500);
+            },
+            onCancel() {},
+        });
+    };
     const handleBuyNow = () => {
         if (localStorage && localStorage.getItem('AccountId')) {
-            Modal.confirm({
-                content: (
-                    <span>
-                        Bạn có muốn thêm <strong style={{ textTransform: 'capitalize' }}>{name}</strong> vào giỏ hàng
-                        không?
-                    </span>
-                ),
-                onOk() {},
-                onCancel() {},
-            });
+            const cartItemId = findProductByParam.id;
+            const quantity = 1;
+            successBuyNow(accountId, { cartItemId, quantity });
         } else {
             setOpenModalLogin(true);
         }

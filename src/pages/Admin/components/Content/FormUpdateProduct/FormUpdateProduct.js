@@ -10,7 +10,7 @@ import { Modal } from 'antd';
 
 const cx = classNames.bind(styles);
 
-function FormUpdateProduct({ productUpdate }) {
+function FormUpdateProduct({ productUpdate, setModal }) {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -57,6 +57,7 @@ function FormUpdateProduct({ productUpdate }) {
             onOk() {
                 dispatch(actionUpdateProductApi(productUpdate.id, updatedProduct));
                 handleReset();
+                setModal();
             },
             onCancel() {},
         });

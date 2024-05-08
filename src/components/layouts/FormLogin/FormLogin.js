@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 
 import styles from './FormLogin.module.scss';
 import Button from '~/components/common/Button';
-import { actionFetchListAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
@@ -14,14 +13,9 @@ function FormLogin() {
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(true);
 
-    const dispatch = useDispatch();
     const accounts = useSelector((state) => state.accounts);
     // console.log(accounts);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        dispatch(actionFetchListAccountApi());
-    }, [dispatch]);
 
     // console.log(userLogin);
 
@@ -31,10 +25,12 @@ function FormLogin() {
         const timeNavigate = () => {
             setTimeout(() => {
                 navigate('/');
-            }, 1500);
+                window.location.reload();
+            }, 1000);
         };
 
-        const checkAccount = accounts.find((acc) => acc.email === accountName || acc.mobile === accountName);
+        const checkAccount =
+            accounts && accounts.find((acc) => acc.email === accountName || acc.mobile === accountName);
 
         if (checkAccount) {
             // document.cookie = `account=${JSON.stringify(checkAccount)}; path=/`;

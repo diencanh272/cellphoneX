@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     manufacturers: getAllManufacturerReducer,
     accounts: getAllAccountReducer,
     carts: cartReducer,
-    order: orderReducer,
+    orders: orderReducer,
 });
 
 export default rootReducer;

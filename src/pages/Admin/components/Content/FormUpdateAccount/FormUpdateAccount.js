@@ -9,7 +9,7 @@ import { actionUpdateAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
-function FormUpdateProduct({ accountUpdate }) {
+function FormUpdateProduct({ accountUpdate, setModal }) {
     const [id, setId] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUserName] = useState('');
@@ -26,7 +26,6 @@ function FormUpdateProduct({ accountUpdate }) {
         const file = e.target.files[0].name;
         setAvatarImageName(file);
     };
-
     useEffect(() => {
         if (accountUpdate) {
             const { id, email, username, fullname, avatarImageName, mobile, address, createDate } = accountUpdate;
@@ -52,6 +51,7 @@ function FormUpdateProduct({ accountUpdate }) {
             onOk() {
                 dispatch(actionUpdateAccountApi(accountUpdate.id, updatedProduct));
                 handleReset();
+                setModal();
             },
             onCancel() {},
         });

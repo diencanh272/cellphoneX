@@ -23,8 +23,10 @@ function TooltipModal() {
     }
 
     useEffect(() => {
-        const getAccountLogin = accounts.find((acc) => acc.id === accountLoginId);
-        setAccount(getAccountLogin);
+        if (accounts) {
+            const getAccountLogin = accounts.find((acc) => acc.id === accountLoginId);
+            setAccount(getAccountLogin);
+        }
     }, [accounts, accountLoginId]);
 
     useEffect(() => {
@@ -34,6 +36,7 @@ function TooltipModal() {
     const handleLogOut = () => {
         if (localStorage && localStorage.getItem('AccountId')) {
             localStorage.clear();
+            window.location.reload();
             setAccount(null);
         }
         setTimeout(() => {
@@ -112,7 +115,6 @@ function TooltipModal() {
                         leftIcon={<FontAwesomeIcon icon={faArrowRightFromBracket} />}
                         onClick={() => {
                             handleLogOut();
-                            window.location.reload();
                         }}
                     >
                         Đăng xuất tài khoản

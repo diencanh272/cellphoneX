@@ -5,7 +5,15 @@ import styles from './Sidebar.module.scss';
 import Button from '~/components/common/Button';
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faHome, faIndustry, faList, faPeopleGroup, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faChartLine,
+    faHome,
+    faIndustry,
+    faList,
+    faPeopleGroup,
+    faPlus,
+    faTruckFast,
+} from '@fortawesome/free-solid-svg-icons';
 import { faProductHunt } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
@@ -97,6 +105,17 @@ function Sidebar() {
                             leftIcon={<FontAwesomeIcon icon={faPlus} />}
                         >
                             Create
+                        </Button>
+                    </li>
+                    <li className={cx('item', { active: isActive('/admin/orders') })}>
+                        <Button
+                            className={cx('btn')}
+                            to={'orders'}
+                            text
+                            large
+                            leftIcon={<FontAwesomeIcon icon={faTruckFast} />}
+                        >
+                            Orders
                         </Button>
                     </li>
                 </ul>

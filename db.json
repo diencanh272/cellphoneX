@@ -10,7 +10,12 @@
       "address": "Cầu Giấy - Hà Nội",
       "createDate": "2020-06-04",
       "status": "ACTIVE",
-      "carts": []
+      "carts": [
+        {
+          "cartItemId": 3,
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": 2,
@@ -37,27 +42,24 @@
       "carts": []
     },
     {
-      "id": 4,
       "email": "ozil@gmail.com",
       "username": "Ozil",
-      "fullname": "Ozil",
+      "fullname": "Ozil ",
       "avatarImageName": "Phai-80x270-3.png",
       "mobile": "0326333666",
       "address": "German",
       "createDate": "2024-04-10",
-      "status": "NOT_ACTIVE",
-      "carts": []
+      "id": 4
     },
     {
       "email": "zidane@gmail.com",
-      "username": "Zidane",
+      "username": "zidane",
       "fullname": "Zidane",
       "avatarImageName": "header-phai-tgdd-248x78.png",
       "mobile": "0333666999",
       "address": "France",
       "createDate": "2024-04-10",
-      "id": 5,
-      "carts": []
+      "id": 5
     },
     {
       "id": 6,
@@ -184,16 +186,115 @@
       "carts": []
     },
     {
-      "fullname": "Toti",
-      "username": "Toti",
-      "mobile": "0327327327",
-      "email": "toti@gmail.com",
-      "password": "A123456",
-      "avatarImageName": "C:\\fakepath\\banner2.svg",
+      "fullname": "Barack Obama",
+      "username": "Obama",
+      "mobile": "0987987987",
+      "email": "obama@gmail.com",
+      "password": "Az123123",
+      "avatarImageName": "C:\\fakepath\\z5026439151132_cbbff944340ab1972dc65ced742a2857.jpg",
       "address": "America",
-      "createDate": "2024-04-25",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123123",
+      "status": "NOT_ACTIVE",
+      "id": 16,
+      "carts": []
+    },
+    {
+      "fullname": "Donald Trump",
+      "username": "Trump",
+      "mobile": "0999888666",
+      "email": "trump@gmail.com",
+      "password": "Az123123",
+      "avatarImageName": "C:\\fakepath\\z5026439151132_cbbff944340ab1972dc65ced742a2857.jpg",
+      "address": "America",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123123",
+      "status": "NOT_ACTIVE",
+      "id": 17,
+      "carts": []
+    },
+    {
+      "fullname": "John Biden",
+      "username": "Biden",
+      "mobile": "0366686626",
+      "email": "biden@gmail.com",
+      "password": "Az123123",
+      "avatarImageName": "C:\\fakepath\\z5026439151132_cbbff944340ab1972dc65ced742a2857.jpg",
+      "address": "America",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123123",
+      "status": "NOT_ACTIVE",
+      "id": 18,
+      "carts": []
+    },
+    {
+      "fullname": "Vladimir Putin",
+      "username": "Putin",
+      "mobile": "0396705129",
+      "email": "putin@gmail.com",
+      "password": "Az123123",
+      "avatarImageName": "C:\\fakepath\\z5026439151132_cbbff944340ab1972dc65ced742a2857.jpg",
+      "address": "Russia",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123123",
       "status": "NOT_ACTIVE",
       "id": 19,
+      "carts": []
+    },
+    {
+      "fullname": "Tổng Trọng",
+      "username": "Trong",
+      "mobile": "0988988988",
+      "email": "trong@gmail.com",
+      "password": "Az123456",
+      "avatarImageName": "C:\\fakepath\\z5026439151132_cbbff944340ab1972dc65ced742a2857.jpg",
+      "address": "Việt Nam",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123456",
+      "status": "NOT_ACTIVE",
+      "id": 20,
+      "carts": []
+    },
+    {
+      "fullname": "Macron",
+      "username": "macron",
+      "mobile": "0988988889",
+      "email": "macron@gmail.com",
+      "password": "Az123456",
+      "avatarImageName": "C:\\fakepath\\z5026439151132_cbbff944340ab1972dc65ced742a2857.jpg",
+      "address": "France",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123456",
+      "status": "NOT_ACTIVE",
+      "id": 21,
+      "carts": []
+    },
+    {
+      "fullname": "John",
+      "username": "JohnSelph",
+      "mobile": "0394146917",
+      "email": "john@gmail.com",
+      "password": "Az123456",
+      "avatarImageName": "C:\\fakepath\\_DSC0685.JPG",
+      "address": "Việt Nam",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123456",
+      "status": "NOT_ACTIVE",
+      "id": 22,
+      "carts": []
+    },
+    {
+      "fullname": "Johnson Staham",
+      "username": "johnson",
+      "mobile": "0375951862",
+      "email": "staham@gmail.com",
+      "password": "Az123456",
+      "avatarImageName": "C:\\fakepath\\_DSC0685.JPG",
+      "address": "America",
+      "createDate": "2024-05-08",
+      "rePassword": "Az123456",
+      "status": "NOT_ACTIVE",
+      "id": 23,
       "carts": []
     }
   ],
@@ -353,7 +454,6 @@
       "categoryName": "Mobile"
     },
     {
-      "id": 18,
       "name": "Realme 11 8GB 128GB",
       "price": "5.190.000",
       "info": "Realme 11 8GB 128GB",
@@ -361,7 +461,8 @@
       "ratingStar": "3",
       "imageName": "https://t.ly/Rr90z",
       "manufacturerName": "OPPO",
-      "categoryName": "Tablet"
+      "categoryName": "Mobile",
+      "id": 18
     },
     {
       "id": 19,
@@ -408,7 +509,6 @@
       "categoryName": "Tablet"
     },
     {
-      "id": 23,
       "name": "Realme 11 8GB 128GB",
       "price": "5.190.000",
       "info": "Realme 11 8GB 128GB",
@@ -416,7 +516,8 @@
       "ratingStar": "3",
       "imageName": "https://t.ly/Rr90z",
       "manufacturerName": "OPPO",
-      "categoryName": "Laptop"
+      "categoryName": "Mobile",
+      "id": 23
     },
     {
       "id": 24,
@@ -961,8 +1062,12 @@
       "name": "Tablet"
     },
     {
-      "name": "Tai nghe",
+      "name": "Sạc",
       "id": 4
+    },
+    {
+      "name": "Tai nghe",
+      "id": 5
     }
   ],
   "manufacturers": [
@@ -1210,6 +1315,114 @@
         }
       ],
       "id": 8
+    },
+    {
+      "accountId": 6,
+      "note": "Nhận sớm",
+      "address": "21/12, Xã Lũng Thầu, Huyện Đồng Văn, Tỉnh Hà Giang",
+      "fullname": "Modric",
+      "phone": "0555888666",
+      "productBuy": [
+        {
+          "quantity": 3,
+          "productName": "Laptop HP Pavilion"
+        },
+        {
+          "quantity": 1,
+          "productName": "Laptop Gaming Acer Nitro 10"
+        },
+        {
+          "quantity": 1,
+          "productName": "Apple MacBook Air M1 256GB 2020 I"
+        },
+        {
+          "quantity": 1,
+          "productName": "Vivo Y03 4GB 64GB"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "accountId": 6,
+      "note": "Nhận sớm ",
+      "address": "101/325, Thị trấn Chũ, Huyện Lục Ngạn, Tỉnh Bắc Giang",
+      "fullname": "Modric",
+      "phone": "0555888666",
+      "productBuy": [
+        {
+          "quantity": 2,
+          "productName": "Laptop Gaming Acer Nitro 5"
+        },
+        {
+          "quantity": 1,
+          "productName": "Macbook Air M3 13 inch 2024 8GB - 256GB"
+        },
+        {
+          "quantity": 1,
+          "productName": "iPhone 15 Pro Max 256GB"
+        },
+        {
+          "quantity": 1,
+          "productName": "iPad Pro 2022 M2 128GB"
+        }
+      ],
+      "id": 10
+    },
+    {
+      "accountId": 6,
+      "note": "Nhận sớm ",
+      "address": "24/23, Phường Trần Phú, Thành phố Hà Giang, Tỉnh Hà Giang",
+      "fullname": "Modric",
+      "phone": "0555888666",
+      "productBuy": [
+        {
+          "quantity": 2,
+          "productName": "Laptop Gaming Acer Nitro 10"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "accountId": 6,
+      "note": "Nhận sớm ",
+      "address": "24/12, Xã Hồng Phương, Huyện Yên Lạc, Tỉnh Vĩnh Phúc",
+      "fullname": "Modric",
+      "phone": "0555888666",
+      "productBuy": [
+        {
+          "quantity": 1,
+          "productName": "Xiaomi Pad 6 8GB 128GB"
+        }
+      ],
+      "id": 12
+    },
+    {
+      "accountId": 6,
+      "note": "Nhận sớm ",
+      "address": "125/12, Phường Trần Phú, Thành phố Hà Giang, Tỉnh Hà Giang",
+      "fullname": "Modric",
+      "phone": "0555888666",
+      "productBuy": [
+        {
+          "quantity": 1,
+          "productName": "OPPO Reno11 F 5G 8GB 256GB"
+        }
+      ],
+      "id": 13
+    },
+    {
+      "accountId": 23,
+      "note": "Nhận sớm",
+      "address": "21/13, Xã Sơn Nam, Huyện Sơn Dương, Tỉnh Tuyên Quang",
+      "fullname": "Johnson Staham",
+      "phone": "0375951862",
+      "productBuy": [
+        {
+          "quantity": 2,
+          "productName": "Laptop HP Pavilion"
+        }
+      ],
+      "id": 14
     }
   ]
 }

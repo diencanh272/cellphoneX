@@ -1,34 +1,23 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 
-import styles from './Order.module.scss';
+import styles from './OrderAdmin.module.scss';
+
 import { actionFetchListOrderAPI } from '~/actions/OrderAction';
-import { useDispatch, useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
-function Order() {
-    let accountId;
+function OrderAdmin() {
     const dispatch = useDispatch();
     const orders = useSelector((state) => state.orders.orders);
-    // console.log(orders);
-    if (localStorage && localStorage.getItem('AccountId')) {
-        accountId = JSON.parse(localStorage.getItem('AccountId'));
-    }
-
-    let ordersInAccount = [];
-    if (accountId) {
-        ordersInAccount = orders.filter((order) => order.accountId === accountId);
-    }
-    // console.log(ordersInAccount);
-    // console.log(productBuys);
 
     useEffect(() => {
         dispatch(actionFetchListOrderAPI());
     }, [dispatch]);
 
     const RenderBody = () => {
-        return ordersInAccount.map((order, index) => (
+        return orders.map((order, index) => (
             <tr key={index} className={cx('row')}>
                 <td className={cx('col-1')}>{order.accountId}</td>
                 <td className={cx('col-2')}>{order.fullname}</td>
@@ -43,8 +32,7 @@ function Order() {
                             </p>
                         ))}
                 </td>
-                <td className={cx('col-1')}>Đang chờ...</td>
-                <td className={cx('col-1')}>{order.note}</td>
+                <td className={cx('col-2')}>Đang chờ...</td>
             </tr>
         ));
     };
@@ -61,8 +49,7 @@ function Order() {
                         <th className={cx('col-3')}>
                             Danh sách mua<strong>(Số lượng)</strong>
                         </th>
-                        <th className={cx('col-1')}>Tình trạng đơn hàng</th>
-                        <th className={cx('col-1')}>Note</th>
+                        <th className={cx('col-2')}>Tình trạng đơn hàng</th>
                     </tr>
                 </thead>
                 <tbody className={cx('table-main')}>
@@ -74,4 +61,4 @@ function Order() {
     );
 }
 
-export default Order;
+export default OrderAdmin;

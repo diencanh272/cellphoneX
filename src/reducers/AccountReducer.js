@@ -12,6 +12,8 @@ export const getAllAccountReducer = (state = initialState, action) => {
 
         case TYPES.CREATE_ACCOUNT:
             let newAccount = action.payload;
+            updateAccount(newAccount.id, { ...newAccount, carts: [] });
+            localStorage.setItem('AccountId', JSON.stringify(newAccount.id));
             return [...state, { ...newAccount }];
 
         case TYPES.DELETE_ACCOUNT:

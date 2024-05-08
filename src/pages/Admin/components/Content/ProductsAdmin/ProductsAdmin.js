@@ -197,7 +197,7 @@ function ProductsAdmin() {
                 />
             </Modal>
             <Modal centered open={modalOpenUpdate} footer={null} onCancel={() => setModalOpenUpdate(false)}>
-                <FormUpdateProduct productUpdate={productUpdate} />
+                <FormUpdateProduct productUpdate={productUpdate} setModal={() => setModalOpenUpdate(false)} />
             </Modal>
         </>
     );

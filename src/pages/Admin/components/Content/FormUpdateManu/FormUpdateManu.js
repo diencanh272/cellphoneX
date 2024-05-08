@@ -8,7 +8,7 @@ import { actionUpdateManufacturerApi } from '~/actions/ManufacturerAction';
 
 const cx = classNames.bind(styles);
 
-function FormUpdateManu({ manuUpdate }) {
+function FormUpdateManu({ manuUpdate, setModal }) {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [logo, setLogo] = useState('');
@@ -35,6 +35,7 @@ function FormUpdateManu({ manuUpdate }) {
             onOk() {
                 dispatch(actionUpdateManufacturerApi(manuUpdate.id, updatedManu));
                 handleReset();
+                setModal();
             },
             onCancel() {},
         });

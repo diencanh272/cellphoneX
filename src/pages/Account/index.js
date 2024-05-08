@@ -8,6 +8,9 @@ import FormSignup from '~/components/layouts/FormSignup';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { actionFetchListAccountApi } from '~/actions/AccountAction';
 
 const cx = classNames.bind(styles);
 
@@ -16,14 +19,20 @@ function Account() {
     const setForm = (path) => {
         return location.pathname === path;
     };
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(actionFetchListAccountApi());
+    }, [dispatch]);
+    const accounts = useSelector((state) => state.accounts);
+    let accountProfile = {};
 
     const FormLoginOrSignup = () =>
         setForm('/account/login') ? <FormLogin /> : setForm('/account/signup') ? <FormSignup /> : '';
 
     const AccountProfile = () => {
-        if (localStorage && localStorage.getItem('Account')) {
-            let accountProfile = JSON.parse(localStorage.getItem('Account'));
-
+        if (localStorage && localStorage.getItem('AccountId')) {
+            let accountProfileId = JSON.parse(localStorage.getItem('AccountId'));
+            accountProfile = accounts.find((acc) => acc.id === accountProfileId);
             return (
                 <div>
                     <h2>Chào mừng {`${accountProfile.username}`} đến với Cellphones</h2>

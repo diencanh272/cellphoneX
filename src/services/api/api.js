@@ -32,6 +32,9 @@ const deleteProduct = (id) => {
 const getAccounts = () => {
     return api.get(urlAccount);
 };
+const getAccountById = (id) => {
+    return api.get(`${urlAccount}/${id}`);
+};
 const createNewAccount = (body) => {
     return api.post(urlAccount, { ...body, status: 'NOT_ACTIVE' });
 };
@@ -100,6 +103,9 @@ const removeCartItem = (accountId, itemId) => {
 const createNewOrder = (body) => {
     return api.post(urlOrder, body);
 };
+const getOrders = () => {
+    return api.get(urlOrder);
+};
 
 export {
     //product
@@ -123,6 +129,7 @@ export {
     createNewAccount,
     deleteAccount,
     updateAccount,
+    getAccountById,
     // Cart
     getAllCarts,
     getCartByAccountId,
@@ -132,4 +139,5 @@ export {
 
     //Order
     createNewOrder,
+    getOrders,
 };

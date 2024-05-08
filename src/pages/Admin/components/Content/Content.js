@@ -10,6 +10,7 @@ import CategoryAdmin from './CategoryAdmin';
 import ProductsAdmin from './ProductsAdmin';
 import FormCreate from './FormCreate';
 import withLoading from '~/utils/helpers/withLoading';
+import OrderAdmin from './OrderAdmin';
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +23,7 @@ function Content() {
                 <Route path="manufacturer" element={<ManufacturerAdmin />} />
                 <Route path="category" element={<CategoryAdmin />} />
                 <Route path="product" element={<ProductsAdmin />} />
+                <Route path="orders" element={<OrderAdmin />} />
                 <Route path="create/*" element={<FormCreate />} />
             </Routes>
         </div>

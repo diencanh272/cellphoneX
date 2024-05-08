@@ -7,12 +7,14 @@ import { Modal } from 'antd';
 import { useDispatch } from 'react-redux';
 import { actionFetchListCategoryApi } from '~/actions/CategoryAction';
 import { actionCreateCategoryApi } from '~/actions/CategoryAction';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function FormCreateCategory() {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(actionFetchListCategoryApi());
@@ -30,6 +32,9 @@ function FormCreateCategory() {
             onOk() {
                 dispatch(actionCreateCategoryApi(newCategory));
                 handleReset();
+                setTimeout(() => {
+                    navigate('/admin/category');
+                }, 500);
             },
             onCancel() {},
         });

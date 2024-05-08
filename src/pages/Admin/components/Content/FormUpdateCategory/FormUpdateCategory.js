@@ -8,7 +8,7 @@ import { actionUpdateCategoryApi } from '~/actions/CategoryAction';
 
 const cx = classNames.bind(styles);
 
-function FormUpdateCategory({ categoryUpdate }) {
+function FormUpdateCategory({ categoryUpdate, setModal }) {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
 
@@ -33,6 +33,7 @@ function FormUpdateCategory({ categoryUpdate }) {
             onOk() {
                 dispatch(actionUpdateCategoryApi(categoryUpdate.id, updatedCategory));
                 handleReset();
+                setModal();
             },
             onCancel() {},
         });
