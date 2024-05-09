@@ -15,7 +15,7 @@
         "axios": "^1.6.8",
         "classnames": "^2.5.1",
         "dvhcvn": "^1.1.20240501",
-        "firebase": "^10.11.0",
+        "firebase": "^10.11.1",
         "font-awesome": "^4.7.0",
         "formik": "^2.4.5",
         "gh-pages": "^6.1.1",

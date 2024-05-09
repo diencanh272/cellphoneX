@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.258764c1.css",
-    "main.js": "/static/js/main.f4237b7a.js",
+    "main.css": "/static/css/main.535d50ac.css",
+    "main.js": "/static/js/main.e2547412.js",
     "static/js/453.96701c5d.chunk.js": "/static/js/453.96701c5d.chunk.js",
     "static/media/chibi2.webp": "/static/media/chibi2.45bf4759eb7002111edb.webp",
     "static/media/footer.png": "/static/media/footer.b08d403a97961203485a.png",
@@ -9,7 +9,6 @@
     "static/media/banner3.svg": "/static/media/banner3.b94f04f6eb9416ddea8da4f50f3107b5.svg",
     "static/media/oppo-reno11-f-sliding-3103.webp": "/static/media/oppo-reno11-f-sliding-3103.0c284295460068f27a71.webp",
     "static/media/hotsale-s24-sis-mobile.webp": "/static/media/hotsale-s24-sis-mobile.43a10061e4caacaa5d24.webp",
-    "static/media/image45.webp": "/static/media/image45.3ecae22f679cebb00206.webp",
     "static/media/xiaomi-14-moban-sliding.webp": "/static/media/xiaomi-14-moban-sliding.02dad39293357d54e6d0.webp",
     "static/media/banner2.svg": "/static/media/banner2.6334e10fc81e7ff12e7a0ebe1b0878e5.svg",
     "static/media/iphone-15-upgrade-sliding.webp": "/static/media/iphone-15-upgrade-sliding.d38a551dbfd2e8552a73.webp",
@@ -19,12 +18,12 @@
     "static/media/bannerRight1.webp": "/static/media/bannerRight1.7c08cc6050ad2ea1476e.webp",
     "static/media/bannerRight2.webp": "/static/media/bannerRight2.c361723e567e09228d4b.webp",
     "index.html": "/index.html",
-    "main.258764c1.css.map": "/static/css/main.258764c1.css.map",
-    "main.f4237b7a.js.map": "/static/js/main.f4237b7a.js.map",
+    "main.535d50ac.css.map": "/static/css/main.535d50ac.css.map",
+    "main.e2547412.js.map": "/static/js/main.e2547412.js.map",
     "453.96701c5d.chunk.js.map": "/static/js/453.96701c5d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.258764c1.css",
-    "static/js/main.f4237b7a.js"
+    "static/css/main.535d50ac.css",
+    "static/js/main.e2547412.js"
   ]
 }

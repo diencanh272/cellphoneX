@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Category.module.scss';
 import Button from '~/components/common/Button';
@@ -15,24 +15,28 @@ const cx = classNames.bind(styles);
 function Category() {
     const dispatch = useDispatch();
     const param = useParams();
-    // console.log(param);
     const products = useSelector((state) => state.products);
     const manufacturers = useSelector((state) => state.manufacturers);
 
-    const findProductByParam = products.filter((prd) => prd.categoryName === param.slug);
+    const findProductByParam = useMemo(() => {
+        return products.filter((prd) => prd.categoryName === param.slug);
+    }, [products, param]);
     const getManufacturer = findProductByParam.map((prd) => prd.manufacturerName);
     const filteredManu = manufacturers.filter((manufacturer) => getManufacturer.includes(manufacturer.name));
-    // console.log(findProductByParam);
 
     const [sortedProducts, setSortedProducts] = useState(findProductByParam);
     const [showProducts, setShowProducts] = useState(10);
-    const [allProductByParam] = useState(findProductByParam);
+
     const [showButtonGetMore, setShowButtonGetMore] = useState(true);
 
     useEffect(() => {
         dispatch(actionFetchListProductApi());
         dispatch(actionFetchListManufacturerApi());
     }, [dispatch]);
+
+    useEffect(() => {
+        setSortedProducts(findProductByParam);
+    }, [findProductByParam]);
 
     const convertPriceToNumber = (priceString) => {
         const cleanedPrice = priceString.replace(/[.đ]/g, '');
@@ -59,9 +63,9 @@ function Category() {
     };
 
     const filterByManufacturer = (manuName) => {
-        const isManufacturerExists = allProductByParam.some((prd) => prd.manufacturerName === manuName);
+        const isManufacturerExists = findProductByParam.some((prd) => prd.manufacturerName === manuName);
         if (isManufacturerExists) {
-            const filtered = allProductByParam.filter((prd) => prd.manufacturerName === manuName);
+            const filtered = findProductByParam.filter((prd) => prd.manufacturerName === manuName);
             // console.log(filtered);
             setSortedProducts(filtered);
         } else {
@@ -79,12 +83,10 @@ function Category() {
 
     const handleGetMore = () => {
         const newShowProducts = showProducts + 10;
-        if (newShowProducts >= allProductByParam.length) {
-            setShowProducts(allProductByParam.length);
-            setShowButtonGetMore(false);
-        } else {
-            setShowProducts(newShowProducts);
-        }
+        // console.log(findProductByParam);
+        const shouldShowButtonGetMore = newShowProducts < findProductByParam.length;
+        setShowProducts(shouldShowButtonGetMore ? newShowProducts : findProductByParam.length);
+        setShowButtonGetMore(shouldShowButtonGetMore);
     };
 
     const currentProducts = sortedProducts.length > 0 ? sortedProducts.slice(0, showProducts) : [];
@@ -104,7 +106,7 @@ function Category() {
                         onClick={() => {
                             setShowProducts(10);
                             setShowButtonGetMore(true);
-                            setSortedProducts(allProductByParam.slice(0, 10));
+                            setSortedProducts(findProductByParam);
                         }}
                     >
                         Tất cả

@@ -12,8 +12,8 @@ function Pagination({ productPerPage, paginate, totalProduct, currentPage }) {
     }
 
     // Tính toán các trang cần hiển thị trên thanh phân trang
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(currentPage + 2, Math.ceil(totalProduct / productPerPage));
+    let startPage = Math.max(1, currentPage - 2); //(1,5-2)
+    let endPage = Math.min(currentPage + 2, Math.ceil(totalProduct / productPerPage)); //(7,)
 
     // Nếu vẫn còn trang phía trước, thêm nút "Prev"
     const prevButton = currentPage > 1 && (
