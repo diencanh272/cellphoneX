@@ -1,0 +1,21 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+
+    .thumb-wrap {
+        width: 200px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: 500;
+    }
+}

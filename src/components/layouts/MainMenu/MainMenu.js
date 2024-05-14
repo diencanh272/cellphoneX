@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState, memo } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './MainMenu.module.scss';
@@ -32,6 +33,7 @@ function MainMenu() {
         setHoveredCategory(null);
     };
 
+    // eslint-disable-next-line no-unused-vars
     const ManufacturerMenu = ({ cateName }) =>
         manufacturers.map((manu, index) => (
             <li className={cx('manu-item')} key={index}>
@@ -70,4 +72,4 @@ function MainMenu() {
     );
 }
 
-export default MainMenu;
+export default memo(MainMenu);

@@ -99,7 +99,7 @@ function Sidebar() {
                     <li className={cx('item', { active: isActive('/admin/create') })}>
                         <Button
                             className={cx('btn')}
-                            to={'create'}
+                            to={'create/product'}
                             text
                             large
                             leftIcon={<FontAwesomeIcon icon={faPlus} />}

@@ -30,7 +30,7 @@ function Order() {
     const RenderBody = () => {
         return ordersInAccount.map((order, index) => (
             <tr key={index} className={cx('row')}>
-                <td className={cx('col-1')}>{order.accountId}</td>
+                <td className={cx('col-1')}>{index + 1}</td>
                 <td className={cx('col-2')}>{order.fullname}</td>
                 <td className={cx('col-2')}>{order.address}</td>
                 <td className={cx('col-2')}>{order.phone}</td>
@@ -54,7 +54,7 @@ function Order() {
             <table className={cx('table')}>
                 <thead className={cx('table-header')}>
                     <tr className={cx('row')}>
-                        <th className={cx('col-1')}>ID</th>
+                        <th className={cx('col-1')}>STT</th>
                         <th className={cx('col-2')}>Tên khách hàng</th>
                         <th className={cx('col-2')}>Địa chỉ</th>
                         <th className={cx('col-2')}>Số điện thoại</th>

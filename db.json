@@ -1034,7 +1034,6 @@
       "categoryName": "Laptop"
     },
     {
-      "id": 69,
       "name": "Realme 11 8GB 128GB",
       "price": "5.190.000",
       "info": "Realme 11 8GB 128GB",
@@ -1042,18 +1041,8 @@
       "ratingStar": "3",
       "imageName": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/n/u/nubia-neo-2_1_.png",
       "manufacturerName": "OPPO",
-      "categoryName": "Laptop"
-    },
-    {
-      "id": 70,
-      "name": "Realme 11 8GB 128GB",
-      "price": "5.190.000",
-      "info": "Realme 11 8GB 128GB",
-      "detail": "Realme 11 8GB 128GB",
-      "ratingStar": "3",
-      "imageName": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/n/u/nubia-neo-2_1_.png",
-      "manufacturerName": "OPPO",
-      "categoryName": "Laptop"
+      "categoryName": "Tablet",
+      "id": 69
     },
     {
       "name": "Samsung Tab S9 Ultra 16GB 256GB",
@@ -1065,6 +1054,17 @@
       "manufacturerName": "SAMSUNG",
       "categoryName": "Tablet",
       "id": 71
+    },
+    {
+      "name": "Màn hình Monitor Xiaomi 27 inch A27i ELA5345EU",
+      "price": "2.990.000",
+      "info": "Màn hình Monitor Xiaomi 27 inch A27i ELA5345EU",
+      "detail": "Màn hình Monitor Xiaomi 27 inch A27i ELA5345EU",
+      "ratingStar": "3",
+      "imageName": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/man-hinh-xiaomi-a27i-ela5345eu-27-inch.png",
+      "manufacturerName": "XIAOMI",
+      "categoryName": "Laptop",
+      "id": 72
     }
   ],
   "categories": [

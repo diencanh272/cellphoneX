@@ -13,6 +13,7 @@ function FormAddress() {
 
     const [selectedProvince, setSelectedProvince] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
+    // eslint-disable-next-line no-unused-vars
     const [selectedWard, setSelectedWard] = useState('');
     const [apartment, setApartment] = useState('');
     const [note, setNote] = useState('');
@@ -100,14 +101,14 @@ function FormAddress() {
         <div className={cx('wrap')}>
             <div className={cx('box-input-wrap')}>
                 <div className={cx('box-input')}>
-                    <select className={cx('input')} onChange={handleProvinceChange}>
+                    <select className={cx('input')} onChange={handleProvinceChange} required>
                         <option value="">--Chọn Tỉnh / Thành phố-- </option>
                         {renderProvinces}
                     </select>
                     <label className={cx('title')}>Tỉnh / Thành phố</label>
                 </div>
                 <div className={cx('box-input')}>
-                    <select className={cx('input')} onChange={handleDistrictChange}>
+                    <select className={cx('input')} onChange={handleDistrictChange} required>
                         <option value="">--Chọn Quận / Huyện-- </option>
                         {renderDistricts}
                     </select>
@@ -117,7 +118,7 @@ function FormAddress() {
             </div>
             <div className={cx('box-input-wrap')}>
                 <div className={cx('box-input')}>
-                    <select className={cx('input')} onChange={handleWardChange}>
+                    <select className={cx('input')} onChange={handleWardChange} required>
                         <option value="">--Chọn Phường / Xã-- </option>
                         {renderWards}
                     </select>

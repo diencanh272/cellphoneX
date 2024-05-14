@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Carousel } from 'antd';
 import classNames from 'classnames/bind';
 
@@ -28,4 +28,4 @@ function CarouselApp() {
     );
 }
 
-export default CarouselApp;
+export default memo(CarouselApp);
